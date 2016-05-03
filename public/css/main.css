@@ -1,0 +1,708 @@
+/* ###############################
+   ####### GENERAL STYLES ########
+   ############################### */
+*{
+  font-family: Open Sans;
+}
+
+body{
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin-bottom: 30px;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+.italic{
+  font-style: italic;
+}
+
+#wrapper {
+    width: 100%;
+    background:#202020;
+}
+
+#page-wrapper {
+    padding: 15px 15px;
+    min-height: 500px;
+    background:#F3F3F3;
+   
+}
+#page-inner {
+    width:100%;
+    margin:10px 20px 10px 0px;
+    background-color:#fff!important;
+    padding:40px;
+    min-height: 900px;
+}
+
+@media(min-width:768px) {
+     #page-wrapper{
+        margin: 0 0 0 250px;
+        padding: 15px 30px;
+        min-height: 900px;
+    
+    }
+  
+    .navbar-side {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+    }
+
+   .navbar {
+ border-radius: 0px; 
+}
+   
+}
+
+
+/* ###########################
+   ####  DATA TABLE  #####
+   ########################### */
+
+.dataTables_scrollBody thead{
+    visibility:hidden;
+}
+
+.group{
+    background-color:#333!important;
+    font-size:11px;
+    color:#fff!important;
+    opacity:0.7;
+}
+
+
+
+
+
+
+/* ###########################
+   ####  USER INTERFACE  #####
+   ########################### */
+
+input, textarea, select {
+  margin-top: 10px;
+  margin-bottom: 18px;
+}
+
+input[type=date] {
+  width: 150px;
+}
+
+.form-control{
+  font-size:13px;
+  padding:6px 8px;
+  color:#333;
+  border-color:#d9d9d9;
+  border-radius:0!important;
+  -webkit-box-shadow:0 1px 0 #d9d9d9;
+  box-shadow:0 1px 0 #d9d9d9;
+  /#width: 40%;#/
+}
+
+.form-control:focus{
+  border-color:#999;
+  -webkit-box-shadow:0 1px 0 #999;
+  box-shadow:0 1px 0 #999;
+}
+
+.form-tab{
+  border: none;
+  background-color: transparent;
+}
+
+.form-tab:focus{
+  outline: none !important;
+}
+
+.supprimer-click{
+  text-align: center;
+}
+
+.tab-number{
+  width: 50px;
+}
+
+.h_sum{
+  width: 70px;
+}
+
+.add_livrable{
+  padding: 5px;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none; 
+  margin: 1px 0;
+  border-radius: 0!important;
+}
+
+.btn-validate {
+  color: #fff;
+  background-color: #f39c12;
+  border-color: #d98600;
+}
+
+.btn-validate, .btn-validate.active, .btn-validate.disabled, .btn-validate.disabled.active, 
+.btn-validate.disabled:active, .btn-validate.disabled:focus, .btn-validate.disabled:hover, 
+.btn-validate:active, .btn-validate:focus, .btn-validate:hover, .btn-validate[disabled], 
+.btn-validate[disabled].active, .btn-validate[disabled]:active, .btn-validate[disabled]:focus, 
+.btn-validate[disabled]:hover, .open .dropdown-toggle.btn-validate, fieldset[disabled] 
+.btn-validate, fieldset[disabled] .btn-validate.active, fieldset[disabled] 
+.btn-validate:active, fieldset[disabled] .btn-validate:focus, fieldset[disabled] 
+.btn-validate:hover {
+  background-color: #f39c12;
+  border-color: #d98600;
+  -webkit-box-shadow: 0 1px 0 #d98600;
+  box-shadow: 0 1px 0 #d98600;
+}
+
+.btn-circle {
+  width: 50px;
+  height: 50px;
+  padding: 6px 0;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border: none;
+}
+
+.btn-close{
+  width: 70px;
+  height: 70px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  margin-top: 20px;
+  background-color: transparent;
+  color: #4D4D4D;
+  border: 1px solid #4D4D4D;
+}
+
+#btn-close-modal{
+  text-align: center;
+}
+
+.btn-del{
+  background-color: #DE1B1B;
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.btn-blue-green{
+  background-color: #1abc9c;
+  color: #fff;
+}
+
+.btn-blue-green:hover{
+  color: #fff;
+  opacity: 0.9;
+}
+
+.btn-inverse{
+  background-color: #415b76;
+  color: #fff;
+}
+
+.btn-inverse:hover{
+  color: #fff;
+  opacity: 0.9;
+}
+
+  .width-input-text{
+    width: 100%;
+  }
+
+  .width-input-number{
+    width: 100%;
+  }
+
+  .check-tab{
+    text-align: center;
+  }
+
+
+
+
+
+/* #################################
+   ####### PANEL BACK METRO ########
+   #################################*/
+
+
+/* UNIQUE ET GENERAL */
+
+
+.back-dash {
+  padding:20px;
+  font-size:18px;
+  font-weight:500;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  color:#fff;
+  width: 100%;
+}
+
+.back-dash:hover{
+  transition: ease-out 200ms;
+  transform: scale(1.01);  
+  box-shadow: 0px 5px 15px #585858;
+}
+
+.back-dash p {
+  padding-top:16px;
+  font-size:13px;
+  color:#fff;
+  line-height:25px;
+  text-align:justify;
+}
+
+/* COLOR */
+
+.red{
+  background-color: #F64747;
+}
+
+.blue{
+  background-color: #6C7A89;
+}
+
+.dark-blue{
+  background-color: #6C7A89;
+}
+
+.light-orange{
+  background-color: #F89406;
+  color: #fff;
+}
+
+.dark-grey{
+  background-color: #4a545e;
+}
+
+
+/* MASTER */
+
+.back-dash-master {
+  font-size:18px;
+  font-weight:500;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  width: 100%;
+}
+
+.back-dash-master:hover{
+  transition: ease-out 200ms;
+  transform: scale(1.01);  
+  box-shadow: 0px 2px 5px #585858;
+}
+
+.back-dash-master p {
+  padding-top:16px;
+  font-size:16px;
+  color:#333;
+  line-height:20px;
+  text-align:justify;
+}
+
+.back-dash-heading{
+  background-color: #2C3A49;
+  padding: 20px;
+  color: #fff;
+}
+
+.back-dash-footer{
+  background-color: grey;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+}
+
+.back-dash-content{
+  padding: 20px;
+  height: 270px;
+}
+
+.back-dash-sub-content{
+  height: 130px;
+}
+
+.back-dash-sub-comment{
+  height: 100px;
+}
+
+/* COLOR */
+
+.success {
+  background-color: #2ECC71;
+}
+
+.warning {
+  background-color: #F5AB35;
+}
+
+.danger {
+  background-color: #F75C4C;
+}
+
+.equal, .equal > div[class*='col-'] {  
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 1 auto;
+}
+
+
+
+
+
+/* ###########################
+   #######    MODAL   ########
+   ###########################*/
+
+.modal-content.dark{
+  margin: 80px;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 30px;
+  color: #4D4D4D;
+}
+
+.modal-content.dark > table{
+  color: #4D4D4D;
+}
+
+
+
+
+
+
+
+
+/* ###########################
+   #######   SIDEBAR  #######
+   ########################### */
+
+.user-image {
+margin: 25px auto;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+max-height:170px;
+max-width:170px;
+}
+
+.navbar-cls-top .navbar-brand {
+color: #fff;
+background: #33c900;
+width: 250px;
+text-align: center;
+height: 60px;
+font-size: 25px;
+font-weight: 700;
+}
+.active-menu {
+    background-color:#585858!important;
+}
+
+.arrow {
+    float: right;
+}
+
+.fa.arrow:before {
+    content: "\f104";
+}
+
+.active > a > .fa.arrow:before {
+    content: "\f107";
+}
+
+.sidebar-collapse , .sidebar-collapse .nav{
+  background: none;
+}
+.sidebar-collapse .nav {
+  padding: 0;
+}
+.sidebar-collapse .nav > li > a {
+  color: #fff;
+  background: #202020;
+  text-shadow: none;
+}
+.sidebar-collapse > .nav > li > a {
+  padding: 15px 10px;
+}
+.sidebar-collapse > .nav > li {
+  border-bottom: 1px solid rgba(107, 108, 109, 0.19);
+}
+.sidebar-collapse .nav > li > a:hover,
+.sidebar-collapse .nav > li > a:focus {
+  background: #0A0A0A;
+  outline: 0;
+}
+.navbar-side {
+  border: none;
+  background-color: #202020;
+}
+.navbar-cls-top {
+  background: #4D4D4D;
+  border-bottom: none;
+}
+
+.navbar-cls-top .navbar-brand:hover {
+background: #33c900;
+color: #fff;
+}
+.navbar-default {
+border: 0px solid black;
+}
+.navbar-header {
+    background: #03a703;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+background-color: #03a703;
+}
+.navbar-default .navbar-toggle {
+border-color: #fff;
+}
+.navbar-default .navbar-toggle .icon-bar {
+background-color: #FFF;
+}
+.nav > li > a > i {
+    margin-right:10px;
+}
+
+.li-menu-high{
+  padding-top: 20px;
+  height: 60px;
+  min-width: 100px;
+  width: auto;
+  background-color: #fff;
+  text-align: center;
+  color: #fff;
+}
+
+.input-modal{
+  margin:0;
+  width: 100%;
+}
+
+
+/* ###########################
+   ####### RESPONSIVE ########
+   ########################### */
+
+@media screen and (max-width: 1400px){
+
+  .table{
+    font-size: 12;
+  }
+
+  .width-input-text{
+    width: 100%;
+  }
+
+  .width-input-number{
+    width: 100%;
+  }
+
+
+}
+
+
+
+
+
+/* ###########################
+   ####### LOGIN FORM ########
+   ########################### */
+
+.background-login-page{
+	min-height: 100%;
+	background-color: #34495e;
+	background-size: cover;
+	font-family: "Open Sans", sans-serif;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(359deg);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  background: rgba(4, 40, 68, 0.85);
+}
+
+.login {
+  border-radius: 2px 2px 5px 5px;
+  padding: 10px 20px 20px 20px;
+  width: 90%;
+  max-width: 320px;
+  background: #ffffff;
+  position: relative;
+  padding-bottom: 80px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+.login.loading button {
+  max-height: 100%;
+  padding-top: 50px;
+}
+.login.loading button .spinner {
+  opacity: 1;
+  top: 40%;
+}
+.login.ok button {
+  background-color: #8bc34a;
+}
+.login.ok button .spinner {
+  border-radius: 0;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  height: 20px;
+  animation: none;
+  transform: rotateZ(-45deg);
+}
+.login input {
+  display: block;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+  transition: border-width 0.2s ease;
+  border-radius: 2px;
+  color: #ccc;
+}
+.login input + i.fa {
+  color: #fff;
+  font-size: 1em;
+  position: absolute;
+  margin-top: -47px;
+  opacity: 0;
+  left: 0;
+  transition: all 0.1s ease-in;
+}
+.login input:focus {
+  outline: none;
+  color: #444;
+  border-color: #2196F3;
+  border-left-width: 35px;
+}
+.login input:focus + i.fa {
+  opacity: 1;
+  left: 30px;
+  transition: all 0.25s ease-out;
+}
+.login a {
+  font-size: 0.8em;
+  color: #2196F3;
+  text-decoration: none;
+}
+.login .title {
+  color: #444;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0 30px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+.login button {
+  width: 100%;
+  height: 100%;
+  padding: 10px 10px;
+  background: #2196F3;
+  color: #fff;
+  display: block;
+  border: none;
+  margin-top: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-height: 60px;
+  border: 0px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 2px 2px;
+  transform: rotateZ(0deg);
+  transition: all 0.1s ease-out;
+  border-bottom-width: 7px;
+}
+.login button .spinner {
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  border: 4px solid #ffffff;
+  border-top-color: rgba(255, 255, 255, 0.3);
+  border-radius: 100%;
+  left: 50%;
+  top: 0;
+  opacity: 0;
+  margin-left: -20px;
+  margin-top: -20px;
+  animation: spinner 0.6s infinite linear;
+  transition: top 0.3s 0.3s ease, opacity 0.3s 0.3s ease, border-radius 0.3s ease;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+}
+.login:not(.loading) button:hover {
+  box-shadow: 0px 1px 3px #2196F3;
+}
+.login:not(.loading) button:focus {
+  border-bottom-width: 4px;
+}
+
+footer {
+  display: block;
+  padding-top: 50px;
+  text-align: center;
+  color: #ddd;
+  font-weight: normal;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+  font-size: 0.8em;
+}
+footer a, footer a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+
