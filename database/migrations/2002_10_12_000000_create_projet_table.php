@@ -15,6 +15,8 @@ class CreateProjetTable extends Migration
         Schema::create('projet', function (Blueprint $table) {
             $table->increments('id');
             $table->string('p_libelle')->unique();
+            $table->integer('fk_id_etat')->unsigned();
+
             $table->foreign('fk_id_etat')->references('id')->on('etat');
             $table->timestamps();
         });

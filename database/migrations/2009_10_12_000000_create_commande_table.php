@@ -18,11 +18,19 @@ class CreateCommandeTable extends Migration
             $table->string('c_numero_commande')->unique();
             $table->tinyInteger('c_insatisfaction_livraison')->default(0);
             $table->tinyInteger('c_insatisfaction_qualite')->default(0);
-            $table->date('c_date_commande')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('c_date_commande')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->float('c_prix');
+            
+            $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_ensemble')->unsigned();
+            $table->integer('fk_id_fournisseur')->unsigned();
+
+
             $table->foreign('fk_id_etat')->references('id')->on('etat');
             $table->foreign('fk_id_ensemble')->references('id')->on('ensemble');
             $table->foreign('fk_id_fournisseur')->references('id')->on('fournisseur');
+
+
             $table->timestamps();
         });
     }

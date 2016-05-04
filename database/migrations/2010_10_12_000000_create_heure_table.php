@@ -17,6 +17,11 @@ class CreateHeureTable extends Migration
             $table->longText('h_designation');
             $table->date('h_date_debut');
             $table->date('h_date_fin');
+
+            $table->integer('fk_id_ensemble')->unsigned();
+            $table->integer('fk_id_etat')->unsigned();
+
+            $table->foreign('fk_id_etat')->references('id')->on('etat');
             $table->foreign('fk_id_ensemble')->references('id')->on('ensemble');
             $table->timestamps();
         });

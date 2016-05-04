@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFournisseurTable extends Migration
+class CreateLivrableTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,11 @@ class CreateFournisseurTable extends Migration
      */
     public function up()
     {
-        Schema::create('fournisseur', function (Blueprint $table) {
+        Schema::create('livrable', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('f_libelle')->unique();
+            $table->string('l_libelle')->unique();
+            $table->integer('fk_id_etat')->unsigned();
+            
             $table->foreign('fk_id_etat')->references('id')->on('etat');
             $table->timestamps();
         });
@@ -27,6 +29,6 @@ class CreateFournisseurTable extends Migration
      */
     public function down()
     {
-        Schema::drop('fournisseur');
+        Schema::drop('livrable');
     }
 }

@@ -14,6 +14,11 @@ class CreateHeureRessourceTable extends Migration
     {
         Schema::create('heure_ressource', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('fk_id_heure')->unsigned();
+            $table->integer('fk_id_ressource')->unsigned();
+            $table->integer('fk_id_etat')->unsigned();
+
             $table->foreign('fk_id_heure')->references('id')->on('heure');
             $table->foreign('fk_id_ressource')->references('id')->on('ressource');
             $table->foreign('fk_id_etat')->references('id')->on('etat');

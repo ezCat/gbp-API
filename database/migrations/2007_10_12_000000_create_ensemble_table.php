@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInformationGeneraleProjetTable extends Migration
+class CreateEnsembleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,20 @@ class CreateInformationGeneraleProjetTable extends Migration
      */
     public function up()
     {
-        Schema::create('projet_information_generale', function (Blueprint $table) {
+        Schema::create('ensemble', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('en_libelle');
+            $table->float('en_budget_heure')->default(0);
+            $table->float('en_budget_commande')->default(0);
+            $table->longText('en_commentaire');
 
             $table->integer('fk_id_etat')->unsigned();
-            $table->integer('fk_id_information_generale')->unsigned();
             $table->integer('fk_id_projet')->unsigned();
 
-            $table->foreign('fk_id_projet')->references('id')->on('projet');
-            $table->foreign('fk_id_information_generale')->references('id')->on('information_generale');
+
             $table->foreign('fk_id_etat')->references('id')->on('etat');
+            $table->foreign('fk_id_projet')->references('id')->on('projet');
+
             $table->timestamps();
         });
     }
@@ -33,6 +37,6 @@ class CreateInformationGeneraleProjetTable extends Migration
      */
     public function down()
     {
-        Schema::drop('projet_information_generale');
+        Schema::drop('ensemble');
     }
 }

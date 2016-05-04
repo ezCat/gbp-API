@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInformationGeneraleProjetTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,20 @@ class CreateInformationGeneraleProjetTable extends Migration
      */
     public function up()
     {
-        Schema::create('projet_information_generale', function (Blueprint $table) {
+        Schema::create('utilisateur', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('code_AD')->unique();
+            $table->string('email')->unique();
 
             $table->integer('fk_id_etat')->unsigned();
-            $table->integer('fk_id_information_generale')->unsigned();
-            $table->integer('fk_id_projet')->unsigned();
+            $table->integer('fk_id_role')->unsigned();
 
-            $table->foreign('fk_id_projet')->references('id')->on('projet');
-            $table->foreign('fk_id_information_generale')->references('id')->on('information_generale');
+            $table->foreign('fk_id_role')->references('id')->on('role');
             $table->foreign('fk_id_etat')->references('id')->on('etat');
+
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -33,6 +37,6 @@ class CreateInformationGeneraleProjetTable extends Migration
      */
     public function down()
     {
-        Schema::drop('projet_information_generale');
+        Schema::drop('utilisateur');
     }
 }

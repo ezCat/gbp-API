@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjetLivrableTable extends Migration
+class CreateProjetUtilisateurTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,15 @@ class CreateProjetLivrableTable extends Migration
      */
     public function up()
     {
-        Schema::create('projet_livrable', function (Blueprint $table) {
+        Schema::create('projet_utilisateur', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_projet')->unsigned();
+            $table->integer('fk_id_utilisateur')->unsigned();
+
             $table->foreign('fk_id_projet')->references('id')->on('projet');
-            $table->foreign('fk_id_livrable')->references('id')->on('livrable');
+            $table->foreign('fk_id_utilisateur')->references('id')->on('utilisateur');
             $table->foreign('fk_id_etat')->references('id')->on('etat');
             $table->timestamps();
         });
@@ -28,6 +33,6 @@ class CreateProjetLivrableTable extends Migration
      */
     public function down()
     {
-        Schema::drop('projet_livrable');
+        Schema::drop('projet_utilisateur');
     }
 }
