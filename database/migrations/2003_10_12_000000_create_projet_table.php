@@ -16,7 +16,9 @@ class CreateProjetTable extends Migration
             $table->increments('id');
             $table->string('p_libelle')->unique();
             $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_projet')->unsigned();
 
+            $table->foreign('fk_id_projet')->references('id')->on('projet');
             $table->foreign('fk_id_etat')->references('id')->on('etat');
             $table->timestamps();
         });

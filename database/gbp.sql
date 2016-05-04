@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 04 Mai 2016 à 15:51
+-- Généré le :  Mer 04 Mai 2016 à 17:57
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -206,11 +206,11 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 
 INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2001_10_12_000000_create_etat_table', 1),
-('2002_10_12_000000_create_projet_table', 1),
 ('2002_10_12_000000_create_roles_table', 1),
 ('2002_10_12_000000_create_users_table', 1),
-('2003_10_12_000000_create_livrable_table', 1),
+('2003_10_12_000000_create_projet_table', 1),
 ('2004_10_12_000000_create_fournisseur_table', 1),
+('2004_10_12_000000_create_livrable_table', 1),
 ('2005_10_12_000000_create_projet_livrable_table', 1),
 ('2006_10_12_000000_create_projet_utilisateur_table', 1),
 ('2007_10_12_000000_create_ensemble_table', 1),
@@ -232,10 +232,12 @@ CREATE TABLE IF NOT EXISTS `projet` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `p_libelle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `fk_id_etat` int(10) unsigned NOT NULL,
+  `fk_id_projet` int(10) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `projet_p_libelle_unique` (`p_libelle`),
+  KEY `projet_fk_id_projet_foreign` (`fk_id_projet`),
   KEY `projet_fk_id_etat_foreign` (`fk_id_etat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -407,7 +409,8 @@ ALTER TABLE `livrable`
 -- Contraintes pour la table `projet`
 --
 ALTER TABLE `projet`
-  ADD CONSTRAINT `projet_fk_id_etat_foreign` FOREIGN KEY (`fk_id_etat`) REFERENCES `etat` (`id`);
+  ADD CONSTRAINT `projet_fk_id_etat_foreign` FOREIGN KEY (`fk_id_etat`) REFERENCES `etat` (`id`),
+  ADD CONSTRAINT `projet_fk_id_projet_foreign` FOREIGN KEY (`fk_id_projet`) REFERENCES `projet` (`id`);
 
 --
 -- Contraintes pour la table `projet_information_generale`
