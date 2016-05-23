@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="" style="padding-top: 20px;">Cellule Projets</a> 
+                <a class="navbar-brand" href="{{ url('/') }}" style="padding-top: 20px;">Cellule Projets</a> 
             </div>
 
             <ul class="nav navbar-nav navbar-left">

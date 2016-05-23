@@ -7,8 +7,8 @@
 
     <div class="row">
             <h2>Ensembles existants</h2>
-            <h3>Total budget horaires : <b>572 h</b></h3>
-            <h3>Total budget comamndes : <b>10000 €</b></h3>
+            <h4>Total budget horaires : <b>572 h</b></h4>
+            <h4>Total budget comamndes : <b>10000 €</b></h4>
     </div>
 
     <br>

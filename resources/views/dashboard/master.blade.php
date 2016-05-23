@@ -315,7 +315,7 @@
                 </div>
 
             </div>
-            <div class="col-xs-4" data-toggle="modal" data-target="#modal-satisfaction-client">
+            <div class="col-xs-4">
 
                 <div class="panel back-dash-master">
                     <div class="back-dash-heading">
