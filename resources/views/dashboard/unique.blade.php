@@ -22,7 +22,7 @@
     </div>
     
     <div class="modal-content dark">
-        <h2>Etat Global : Commandes</h2>
+        <h2>Etat Global : Commandes<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
         <table class="table" style="width: 100%">
           <thead>
              <tr>
@@ -100,7 +100,7 @@
     </div>
     
     <div class="modal-content dark">
-        <h2>Bilan des heures par ressource</h2>
+        <h2>Bilan des heures par ressource<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
         <table id="table-group" class="table" style="width: 100%">
           <thead>
              <tr>
@@ -145,7 +145,7 @@
     </div>
     
     <div class="modal-content dark">
-        <h2>Bilan des heures par ensemble</h2>
+        <h2>Bilan des heures par ensemble<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
         <table id="table-group" class="table" style="width: 100%">
           <thead>
              <tr>
@@ -190,7 +190,7 @@
     </div>
     
     <div class="modal-content dark">
-        <h2>Bilan des commandes par ensemble</h2>
+        <h2>Bilan des commandes par ensemble<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
         <table id="table-group" class="table" style="width: 100%">
           <thead>
              <tr>
@@ -235,7 +235,7 @@
     </div>
     
     <div class="modal-content dark">
-        <h2>Bilan des commandes par fournisseur</h2>
+        <h2>Bilan des commandes par fournisseur<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
         <table id="table-group" class="table" style="width: 100%">
           <thead>
              <tr>
