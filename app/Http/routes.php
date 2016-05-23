@@ -3,7 +3,7 @@
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', function(){
-		return view('dashboard/general');
+		return view('accueil');
 	});
 
     Route::get('ajouter/affaire', function(){
