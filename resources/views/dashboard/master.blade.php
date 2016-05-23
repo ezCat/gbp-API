@@ -319,19 +319,19 @@
 
                 <div class="panel back-dash-master">
                     <div class="back-dash-heading">
-                        <i class="fa fa-truck fa-3x"></i><strong> &nbsp; FOURNISSEUR</strong>
+                        <i class="fa fa-truck fa-3x"></i><strong> &nbsp; FOURNISSEURS</strong>
                     </div>
 
                     <div class="back-dash-content">
                         <div class="back-dash-sub-content">
                             <table style="width: 100%">
                                 <tr>
-                                    <td style="width: 50%"><p>Non conformité : </p></td>
-                                    <td><p><strong>2</strong></p></td>
+                                    <td style="width: 50%"><p>Défauts qualités : </p></td>
+                                    <td><p><strong>5%</strong></p></td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 50%"><p>Retard livraison : </p></td>
-                                    <td><p><strong>1</strong></p></td>
+                                    <td style="width: 50%"><p>Retards livraisons : </p></td>
+                                    <td><p><strong>4%</strong></p></td>
                                 </tr>
                             </table>
                         </div>

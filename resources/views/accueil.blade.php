@@ -18,7 +18,7 @@
 				</tr>
 				<tr>
 					<td><p><b>CHAR PIPA</b></p></td>
-					<td><p>dernière modification le <strong>24/04/2016</strong> par <strong>Thomas VUCKICENIC</strong></p></td>
+					<td><p>dernière modification le <strong>24/04/2016</strong> par <strong>Thomas VUCKICEVIC</strong></p></td>
 				</tr>
 				<tr>
 					<td><p><b>PROJET DESAMIANTAGE</b></p></td>
