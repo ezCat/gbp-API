@@ -6,28 +6,8 @@
 
     <div class="modal-content dark">
         <h2>Projets existants</h2>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Nom du projet</th>
-                <th>Etat du projet</th>
-                <th>Commentaires</th>
-            </tr>
-            </thead>
 
-            <tbody>
-            <tr>
-                <td>{{Form::text('', 'LHP N4', ["class" => "form-tab"])}}</td>
-                <td>{{Form::text('', 'Soldé', ["class" => "form-tab"])}}</td>
-                <td>{{Form::text('', 'Commentaires...', ["class" => "form-tab"])}}</td>
-            </tr>
-            <tr>
-                <td>{{Form::text('', 'ITV PE SUP 1400', ["class" => "form-tab"])}}</td>
-                <td>{{Form::text('', 'En cours', ["class" => "form-tab"])}}</td>
-                <td>{{Form::text('', 'Commentaires...', ["class" => "form-tab"])}}</td>
-            </tr>
-            </tbody>
+        <div class="table-liste-projet"></div>
 
-        </table>
     </div>
 </div>

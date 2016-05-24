@@ -15,7 +15,7 @@ class CreateProjetUtilisateurTable extends Migration
         Schema::create('projet_utilisateur', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_etat')->unsigned()->default(1);
             $table->integer('fk_id_projet')->unsigned();
             $table->integer('fk_id_utilisateur')->unsigned();
 

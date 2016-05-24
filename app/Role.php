@@ -11,10 +11,10 @@ class Role extends Model
     protected $table = "role";
 
     public function Etat() {
-        return $this->hasOne('Etat');
+        return $this->hasOne('App\Etat');
     }
 
     public function User() {
-        return $this->belongsToMany('User');
+        return $this->belongsToMany('App\User');
     }
 }

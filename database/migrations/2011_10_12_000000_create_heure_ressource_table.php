@@ -17,7 +17,7 @@ class CreateHeureRessourceTable extends Migration
 
             $table->integer('fk_id_heure')->unsigned();
             $table->integer('fk_id_ressource')->unsigned();
-            $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_etat')->unsigned()->default(1);
 
             $table->foreign('fk_id_heure')->references('id')->on('heure');
             $table->foreign('fk_id_ressource')->references('id')->on('ressource');

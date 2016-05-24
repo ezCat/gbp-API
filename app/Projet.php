@@ -11,22 +11,22 @@ class Projet extends Model
     protected $table = "projet";
 
     public function Ensemble() {
-    	return $this->belongsToMany('Ensemble');
+    	return $this->belongsToMany('App\Ensemble');
     }
 
     public function User() {
-    	return $this->belongsToMany('User', 'projet_utilisateur', 'fk_id_projet', 'fk_id_utilisateur');
+    	return $this->belongsToMany('App\User', 'projet_utilisateur', 'fk_id_projet', 'fk_id_utilisateur');
     }
 
     public function Livrable() {
-    	return $this->belongsToMany('Livrable', 'projet_livrable', 'fk_id_projet', 'fk_id_livrable');
+    	return $this->belongsToMany('App\Livrable', 'projet_livrable', 'fk_id_projet', 'fk_id_livrable');
     }
 
     public function InformationGenerale() {
-    	return $this->belongsToMany('InformationGenerale', 'projet_information_generale', 'fk_id_projet', 'fk_id_information_generale');
+    	return $this->belongsToMany('App\InformationGenerale', 'projet_information_generale', 'fk_id_projet', 'fk_id_information_generale');
     }
 
     public function Etat() {
-        return $this->hasOne('Etat');
+        return $this->hasOne('App\Etat');
     }
 }

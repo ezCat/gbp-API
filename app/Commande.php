@@ -11,15 +11,15 @@ class Commande extends Model
     protected $table = "commande";
 
     public function Fournisseur() {
-    	return $this->hasOne('Fournisseur');
+    	return $this->hasOne('App\Fournisseur');
     }
 
     public function Ensemble() {
-    	return $this->hasOne('Ensemble');
+    	return $this->hasOne('App\Ensemble');
     }
 
     public function Etat() {
-        return $this->hasOne('Etat');
+        return $this->hasOne('App\Etat');
     }
 
 }

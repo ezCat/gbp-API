@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('code_AD')->unique();
             $table->string('email')->unique();
 
-            $table->integer('fk_id_etat')->unsigned();
-            $table->integer('fk_id_role')->unsigned();
+            $table->integer('fk_id_etat')->unsigned()->default(1);
+            $table->integer('fk_id_role')->unsigned()->default(2);
 
             $table->foreign('fk_id_role')->references('id')->on('role');
             $table->foreign('fk_id_etat')->references('id')->on('etat');

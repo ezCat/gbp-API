@@ -17,7 +17,7 @@ class CreateBudgetHeureRessourceTable extends Migration
 
             $table->integer('fk_id_ensemble')->unsigned();
             $table->integer('fk_id_ressource')->unsigned();
-            $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_etat')->unsigned()->default(1);
 
             $table->foreign('fk_id_etat')->references('id')->on('etat');
             $table->foreign('fk_id_ensemble')->references('id')->on('ensemble');

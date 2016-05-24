@@ -26,10 +26,6 @@
 				</tr>
 			</table>
 
-			{{Form::open([route('projet.index')])}}
-				<button type="submit">Click</button>
-			{{Form::close()}}
-
 		</div>
 	</div>
 

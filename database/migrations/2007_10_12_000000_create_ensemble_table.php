@@ -19,7 +19,7 @@ class CreateEnsembleTable extends Migration
             $table->float('en_budget_commande')->default(0);
             $table->longText('en_commentaire');
 
-            $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_etat')->unsigned()->default(1);
             $table->integer('fk_id_projet')->unsigned();
 
 

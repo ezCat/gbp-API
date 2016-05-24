@@ -6,25 +6,28 @@ Route::group(['middleware' => ['web']], function () {
 		return view('accueil');
 	});
 
-    Route::get('ajouter/affaire', function(){
+//	SAISIE
+
+    Route::get('ajouter-projet', function(){
 		return view('saisie/ajouter_affaire');
 	});
-
-    Route::get('saisir/affaire', function(){
+    Route::get('saisir-projet', function(){
 		return view('saisie/saisie');
 	});
+
+//	TABLEAU DE BORD
 
     Route::get('dashboard/general', function(){
 		return view('dashboard/general');
 	});
-
 	Route::get('dashboard/unique', function(){
 		return view('dashboard/unique');
 	});
-
 	Route::get('dashboard/master', function(){
 		return view('dashboard/master');
 	});
+
+//	HELP
 
 	Route::get('help', function(){
 		return view('errors.503');
@@ -37,3 +40,8 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 });
+
+// AJAX
+
+Route::post('ajax/ajouterProjet', 'ProjetController@store');
+Route::post('ajax/getListeProjet', 'ProjetController@getListe');

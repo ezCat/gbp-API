@@ -11,10 +11,10 @@ class Livrable extends Model
     protected $table = "livrable";
 
     public function Projet() {
-    	return $this->belongsToMany('Projet', 'projet_livrable', 'fk_id_livrable', 'fk_id_projet');
+    	return $this->belongsToMany('App\Projet', 'projet_livrable', 'fk_id_livrable', 'fk_id_projet');
     }
 
     public function Etat() {
-        return $this->hasOne('Etat');
+        return $this->hasOne('App\Etat');
     }
 }

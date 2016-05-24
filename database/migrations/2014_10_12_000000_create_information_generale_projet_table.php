@@ -15,7 +15,7 @@ class CreateInformationGeneraleProjetTable extends Migration
         Schema::create('projet_information_generale', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_etat')->unsigned()->default(1);
             $table->integer('fk_id_information_generale')->unsigned();
             $table->integer('fk_id_projet')->unsigned();
 

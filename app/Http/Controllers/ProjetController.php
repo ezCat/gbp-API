@@ -8,7 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Projet;
-use App\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class ProjetController extends Controller
 {
@@ -19,7 +20,7 @@ class ProjetController extends Controller
      */
     public function index()
     {
-        User::create(['prenom' => 'Dennis', 'nom' => 'Wittmer', 'code_AD' => 'VH5085', 'email' => 'dennis.wittmer@suez.com']);
+        //
     }
 
     /**
@@ -40,12 +41,15 @@ class ProjetController extends Controller
      */
     public function store(Request $request)
     {
-        $user = 1;
+        if ($request->isMethod('post')){
+            $user = 1;
+            $projet = new Projet();
+            $projet->p_libelle = $request->input('libelle');
+            $projet->save();
+            $projet->User()->attach($user);
 
-        $projet = new Projet();
-        $projet->p_libelle = Input::get('libelle');
-        $projet->save();
-        $projet->user()->attach($user);
+            return response()->json(Input::get('libelle'));
+        }
     }
 
     /**
@@ -91,5 +95,14 @@ class ProjetController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getListe(){
+        $listProjet = DB::table('projet')
+                        ->join('projet_utilisateur', 'projet_utilisateur.fk_id_projet', '=', 'projet.id')
+                        ->join('utilisateur', 'projet_utilisateur.fk_id_utilisateur', '=', 'utilisateur.id')
+                        ->join('etat', 'projet.fk_id_etat', '=', 'etat.id')
+                        ->get();
+        return response()->json($listProjet);
     }
 }

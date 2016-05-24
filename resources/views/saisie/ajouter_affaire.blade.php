@@ -9,22 +9,32 @@
 
             @include('saisie.modal.affaire')
 
-            <div class="col-xs-9">
-                <a href="#modal-affaire" id="btn-affaire">
-                    <button style="float: right" class="btn-inverse btn-circle"><i class="fa fa-list"></i></button>
-                </a>
-                <h3>Ajouter un projet</h3>
-                <hr>
+            <div class="row">
+                <div class="col-xs-9">
+                    <a href="#modal-affaire" id="btn-affaire">
+                        <button style="float: right" class="btn-inverse btn-circle"><i class="fa fa-list"></i></button>
+                    </a>
+                    <h3>Ajouter un projet</h3>
+                    <hr>
 
-                {{Form::open([route('projet.store')])}}
+                    {!! Form::open(array('url'=>'#','method'=>'POST', 'id'=>'form')) !!}
 
-                <label>Nom du projet :</label>
-                {{Form::text('libelle', null, ['class' => 'form-control', "placeholder" => "Entrez le nom du nouveau projet..."])}}
+                    <label>Nom du projet :</label>
+                    {{Form::text('libelle', null, ['class' => 'form-control', "placeholder" => "Entrez le nom du nouveau projet..."])}}
 
-                <button class="btn btn-validate" style="float: right;"><i class="fa fa-arrow-right"></i> Soumettre
-                </button>
+                    <button id='aa_submit' class="btn btn-validate" style="float: right;">
+                        <i class="fa fa-arrow-right"></i> Soumettre
+                    </button>
 
-                {{Form::close()}}
+
+                    {!! Form::close()!!}
+
+                </div>
             </div>
+
+            <div id="for_alert"></div>
+
+            <script src="{{asset('/js/ajax/postProjet.js')}}"></script>
+            <script src="{{asset('/js/ajax/getProjet.js')}}"></script>
 
 @endsection

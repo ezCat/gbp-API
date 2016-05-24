@@ -15,7 +15,7 @@
 
             <ul class="nav navbar-nav navbar-left">
                 <li style="margin: 10px 10px 0 10px">
-                    <a style="margin: 0; padding:0" href="{{url('ajouter/affaire')}}"><button class="btn btn-blue-green"><i class="fa fa-plus"></i> Ajouter un projet</button></a>
+                    <a style="margin: 0; padding:0" href="{{url('ajouter-projet')}}"><button class="btn btn-blue-green"><i class="fa fa-plus"></i> Ajouter un projet</button></a>
                 </li>
                 <li style="margin: 10px 10px 0 10px">
                     <button class="btn btn-inverse" data-toggle="modal" data-target="#modal-change-projet"><i class="fa fa-refresh"></i> Changer de projet</button>
@@ -67,7 +67,7 @@
                     <img src="{{asset('img/suez.png')}}" class="user-image img-responsive"/>
 					</li>	
                     <li>
-                        <a href="{{ url('saisir/affaire') }}" id="saisie"><i class="fa fa-pencil-square-o fa-3x"></i> Saisie d'une affaire</a>
+                        <a href="{{ url('saisir-projet') }}" id="saisie"><i class="fa fa-pencil-square-o fa-3x"></i> Saisie d'une affaire</a>
                     </li>	
                     <li>
                         <a></a>

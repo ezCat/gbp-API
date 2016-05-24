@@ -11,14 +11,14 @@ class HeureBudget extends Model
     protected $table = "heure";
 
     public function Ressource() {
-    	return $this->hasOne('Ressource');
+    	return $this->hasOne('App\Ressource');
     }
 
     public function Ensemble() {
-    	return $this->hasOne('Ensemble');
+    	return $this->hasOne('App\Ensemble');
     }
 
     public function Etat() {
-        return $this->hasOne('Etat');
+        return $this->hasOne('App\Etat');
     }
 }

@@ -15,7 +15,7 @@ class CreateLivrableTable extends Migration
         Schema::create('livrable', function (Blueprint $table) {
             $table->increments('id');
             $table->string('l_libelle')->unique();
-            $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_etat')->unsigned()->default(1);
             
             $table->foreign('fk_id_etat')->references('id')->on('etat');
             $table->timestamps();

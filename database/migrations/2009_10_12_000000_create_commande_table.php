@@ -21,7 +21,7 @@ class CreateCommandeTable extends Migration
             $table->dateTime('c_date_commande')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->float('c_prix');
             
-            $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_etat')->unsigned()->default(1);
             $table->integer('fk_id_ensemble')->unsigned();
             $table->integer('fk_id_fournisseur')->unsigned();
 

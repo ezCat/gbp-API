@@ -16,7 +16,7 @@ class CreateFournisseurTable extends Migration
             $table->increments('id');
             $table->string('f_libelle')->unique();
 
-            $table->integer('fk_id_etat')->unsigned();
+            $table->integer('fk_id_etat')->unsigned()->default(1);
             
             $table->foreign('fk_id_etat')->references('id')->on('etat');
             $table->timestamps();
