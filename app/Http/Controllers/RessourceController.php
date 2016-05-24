@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class Commande extends Controller
+class RessourceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,9 +37,7 @@ class Commande extends Controller
      */
     public function store(Request $request)
     {
-        // Récupération des données avec input::all()
-
-        // Utilisation du model
+        //
     }
 
     /**

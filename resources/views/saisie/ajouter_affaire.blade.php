@@ -16,10 +16,10 @@
                 <h3>Ajouter un projet</h3>
                 <hr>
 
-                {{Form::open()}}
+                {{Form::open([route('projet.store')])}}
 
                 <label>Nom du projet :</label>
-                {{Form::text('', null, ['class' => 'form-control', "placeholder" => "Entrez le nom du nouveau projet..."])}}
+                {{Form::text('libelle', null, ['class' => 'form-control', "placeholder" => "Entrez le nom du nouveau projet..."])}}
 
                 <button class="btn btn-validate" style="float: right;"><i class="fa fa-arrow-right"></i> Soumettre
                 </button>

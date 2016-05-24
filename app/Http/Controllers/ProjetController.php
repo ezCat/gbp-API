@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class Ensemble extends Controller
+use App\Projet;
+use App\User;
+
+class ProjetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +19,7 @@ class Ensemble extends Controller
      */
     public function index()
     {
-        //
+        User::create(['prenom' => 'Dennis', 'nom' => 'Wittmer', 'code_AD' => 'VH5085', 'email' => 'dennis.wittmer@suez.com']);
     }
 
     /**
@@ -37,7 +40,12 @@ class Ensemble extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = 1;
+
+        $projet = new Projet();
+        $projet->p_libelle = Input::get('libelle');
+        $projet->save();
+        $projet->user()->attach($user);
     }
 
     /**

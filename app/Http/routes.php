@@ -30,4 +30,10 @@ Route::group(['middleware' => ['web']], function () {
 		return view('errors.503');
 	});
 
+	Route::resource('projet', 'ProjetController');
+
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
 });

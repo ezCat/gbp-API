@@ -15,15 +15,15 @@ class Projet extends Model
     }
 
     public function User() {
-    	return $this->belongsToMany('User', 'projet_utilisateur', 'fk_id_utilisateur', 'fk_id_projet');
+    	return $this->belongsToMany('User', 'projet_utilisateur', 'fk_id_projet', 'fk_id_utilisateur');
     }
 
     public function Livrable() {
-    	return $this->belongsToMany('Livrable', 'projet_livrable', 'fk_id_livrable', 'fk_id_projet');
+    	return $this->belongsToMany('Livrable', 'projet_livrable', 'fk_id_projet', 'fk_id_livrable');
     }
 
     public function InformationGenerale() {
-    	return $this->belongsToMany('InformationGenerale', 'projet_information_generale', 'fk_id_information_generale', 'fk_id_projet');
+    	return $this->belongsToMany('InformationGenerale', 'projet_information_generale', 'fk_id_projet', 'fk_id_information_generale');
     }
 
     public function Etat() {
