@@ -34,19 +34,22 @@ class ProjetController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Requete AJAX d'ajout de projet.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        if ($request->isMethod('post')){
-            $user = 1;
+        if ($request->isMethod('post')) {
+
+            $id_user = $request->input('id_user');
+
             $projet = new Projet();
             $projet->p_libelle = $request->input('libelle');
             $projet->save();
-            $projet->User()->attach($user);
+
+            $projet->User()->attach($id_user);
 
             return response()->json(Input::get('libelle'));
         }
@@ -55,7 +58,7 @@ class ProjetController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -66,7 +69,7 @@ class ProjetController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -77,8 +80,8 @@ class ProjetController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -89,7 +92,7 @@ class ProjetController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -97,12 +100,68 @@ class ProjetController extends Controller
         //
     }
 
-    public function getListe(){
+    /**
+     * Récupérer une liste de projet.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getListe()
+    {
         $listProjet = DB::table('projet')
-                        ->join('projet_utilisateur', 'projet_utilisateur.fk_id_projet', '=', 'projet.id')
-                        ->join('utilisateur', 'projet_utilisateur.fk_id_utilisateur', '=', 'utilisateur.id')
-                        ->join('etat', 'projet.fk_id_etat', '=', 'etat.id')
-                        ->get();
+            ->select('projet.id', 'projet.p_libelle', 'utilisateur.nom', 'projet.p_commentaire')
+            ->join('projet_utilisateur', 'projet_utilisateur.fk_id_projet', '=', 'projet.id')
+            ->join('utilisateur', 'projet_utilisateur.fk_id_utilisateur', '=', 'utilisateur.id')
+            ->join('etat', 'projet.fk_id_etat', '=', 'etat.id')
+            ->get();
         return response()->json($listProjet);
+    }
+
+    /**
+     * Affiche la page de choix de projet.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function choisirProjet()
+    {
+        $projets = Projet::all();
+        return view('choisir_projet', compact('projets'));
+    }
+
+    /**
+     * Intégration dans la variable de session.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function validationFormProjet(Request $request)
+    {
+        session()->put('id_projet', $request->input('id_projet'));
+        return view('accueil');
+    }
+
+    /**
+     * Requete AJAX de changement de statut
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postStatutProjet(Request $request)
+    {
+        if ($request->isMethod('post')) {
+
+            $fk_id_etat = $request->input('etat');
+            $id = $request->input('id_projet');
+
+            DB::table('projet')
+                ->where('id', '=', $id)
+                ->update(['fk_id_etat' => $fk_id_etat]);
+
+            $return = DB::table('etat')
+                ->select('id', 'et_libelle')
+                ->where('id', '=', $fk_id_etat)
+                ->get();
+
+            return response()->json($return);
+        }
     }
 }

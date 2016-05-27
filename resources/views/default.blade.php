@@ -2,10 +2,10 @@
   <meta charset="UTF-8"> 
  
   <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}"> 
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.css') }}"> 
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}"> 
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}"> 
-  <link rel="stylesheet" href="{{ asset('css/bootstrap.vertical-tabs.css') }}">     
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.vertical-tabs.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
 <!--     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"> -->
   <script src="{{ asset('js/jquery-2.1.4.js') }}"></script> 
 </head> 
@@ -22,3 +22,4 @@
 <!-- <script src="{{ asset('js/data-table-custom.js') }}"></script> --> 
 <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script> 
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script> -->
+<script src="{{asset('js/ajax/postStatutProjet.js')}}"></script>

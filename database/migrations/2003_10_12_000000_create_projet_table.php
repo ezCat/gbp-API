@@ -15,6 +15,7 @@ class CreateProjetTable extends Migration
         Schema::create('projet', function (Blueprint $table) {
             $table->increments('id');
             $table->string('p_libelle')->unique();
+            $table->string('p_commentaire', 1000)->default('Aucun commentaire');
             $table->integer('fk_id_etat')->unsigned()->default(4);
             
             $table->foreign('fk_id_etat')->references('id')->on('etat');

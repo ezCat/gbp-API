@@ -7,7 +7,7 @@
     <div class="modal-content dark">
         <h2>Projets existants</h2>
 
-        <div class="table-liste-projet"></div>
+        <div id="table-liste-projet"></div>
 
     </div>
 </div>

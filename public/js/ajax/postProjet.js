@@ -4,8 +4,8 @@ $(document).ready(function(){
         event.preventDefault();
         $.ajax({
             type: 'POST',
-            url: 'ajax/ajouterProjet',
-            data: {'libelle': $('input[name=libelle]').val()},
+            url: 'http://localhost/gbp-API/public/ajax/ajouterProjet',
+            data: {'libelle': $('input[name=libelle]').val(), 'id_user': $('#id_user').attr('data-id')},
             dataType: 'json',
             success: function (json) {
                 $('#for_alert').html('<div class="alert alert-success"><i class="fa fa-check-circle"></i> Le projet ' + json + ' a bien été ajouté</div>')

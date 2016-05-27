@@ -1,6 +1,8 @@
 @extends('default')
     
 <body>
+
+    <input type="hidden" id="id_user" data-id="{{ session()->get('id_user') }}">
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -10,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}" style="padding-top: 20px;">Cellule Projets</a> 
+                <a class="navbar-brand" href="{{ url('/') }}" style="padding-top: 20px;">Cellule Projets</a>
             </div>
 
             <ul class="nav navbar-nav navbar-left">
@@ -18,45 +20,46 @@
                     <a style="margin: 0; padding:0" href="{{url('ajouter-projet')}}"><button class="btn btn-blue-green"><i class="fa fa-plus"></i> Ajouter un projet</button></a>
                 </li>
                 <li style="margin: 10px 10px 0 10px">
-                    <button class="btn btn-inverse" data-toggle="modal" data-target="#modal-change-projet"><i class="fa fa-refresh"></i> Changer de projet</button>
+                    <a href="{{url('choose.projet')}}" style="padding: 0"><button class="btn btn-inverse" data-toggle="modal" data-target="#modal-change-projet"><i class="fa fa-refresh"></i> Changer de projet</button>
+                    </a>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li  style="margin: 0px 10px 0 10px">
-                    <button class="btn light-orange" style="font-size: 20; height: 58px;"><b>LHP N4</b></button>
+                    <button class="btn light-orange" style="font-size: 20; height: 58px;" id="btn-id-projet" data-id="{!! session()->get('id_projet') !!}"><b>{!! session()->get('id_projet') !!}</b></button>
                 </li>
                 <li style="margin: 0 25px 0 15px">
-                    <select class="form-control" style="margin: 12px 10px 0 0; background-color: transparent; color: #fff;">
-                        <option style="background-color: #4d4d4d; color: #fff">En cours</option>
-                        <option style="background-color: #4d4d4d; color: #fff">Soldé</option>
+                    <select id='change-statut-projet' class="form-control" style="margin: 12px 10px 0 0; background-color: transparent; color: #fff;">
+                        <option style="background-color: #4d4d4d; color: #fff" value="4">En cours</option>
+                        <option style="background-color: #4d4d4d; color: #fff" value="5">Soldé</option>
                     </select>
                 </li>
             </ul>
 
-              <!-- Modal change projet -->
-              <div class="modal fade" id="modal-change-projet" tabindex="-1" role="dialog" aria-labelledby="modal-change-projet" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
-                        <h4 class="modal-title" id="myModalLabel">Choisir un projet</h4>
-                        </div>
-                        <div class="modal-body">
-                            <h3>Liste des projets</h3>
-                            <select class="form-control">
-                                <option>Projet 1</option>
-                                <option>Projet 2</option>
-                                <option>Projet 3</option>
-                            </select>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                            <button type="button" class="btn btn-primary">Sélectionner</button>
-                        </div>
-                </div>
-              </div>
-            </div>
+              {{--<!-- Modal change projet -->--}}
+              {{--<div class="modal fade" id="modal-change-projet" tabindex="-1" role="dialog" aria-labelledby="modal-change-projet" aria-hidden="true">--}}
+                {{--<div class="modal-dialog">--}}
+                    {{--<div class="modal-content">--}}
+                        {{--<div class="modal-header">--}}
+                        {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>--}}
+                        {{--<h4 class="modal-title" id="myModalLabel">Choisir un projet</h4>--}}
+                        {{--</div>--}}
+                        {{--<div class="modal-body">--}}
+                            {{--<h3>Liste des projets</h3>--}}
+                            {{--<select class="form-control">--}}
+                                {{--<option>Projet 1</option>--}}
+                                {{--<option>Projet 2</option>--}}
+                                {{--<option>Projet 3</option>--}}
+                            {{--</select>--}}
+                        {{--</div>--}}
+                        {{--<div class="modal-footer">--}}
+                            {{--<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>--}}
+                            {{--<button type="button" class="btn btn-primary">Sélectionner</button>--}}
+                        {{--</div>--}}
+                {{--</div>--}}
+              {{--</div>--}}
+            {{--</div>--}}
         </nav>   
 
 
@@ -92,4 +95,4 @@
                     </li>
                 </ul>
             </div>
-        </nav>  
+        </nav>

@@ -6,12 +6,12 @@
 
     <div class="modal-content dark">
         <h2>Ajouter un Fournisseur</h2>
-        {{Form::open()}}
+        {{Form::open(array('url'=>'#', 'method'=>'POST', 'id'=>'form'))}}
 
         Fournisseur :
-        {{Form::text('f_libelle', null, ["class" => "form-control"])}}
+        {{Form::text('libelle', null, ["class" => "form-control"])}}
 
-        <button style="float: right" class="btn btn-validate"><i class="fa fa-arrow-right"></i> Ajouter
+        <button style="float: right" class="btn btn-validate" id="af_submit"><i class="fa fa-arrow-right"></i> Ajouter
         </button>
 
         {{Form::close()}}
