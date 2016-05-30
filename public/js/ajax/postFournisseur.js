@@ -4,7 +4,7 @@ $(document).ready(function(){
         event.preventDefault();
         $.ajax({
             type: 'POST',
-            url: 'http://localhost/gbp-API/public/ajax/ajouterFournisseur',
+            url: 'http://localhost/gbp-API/public/ajax/postFournisseur',
             data: {'libelle': $('input[name=libelle]').val()},
             dataType: 'json',
             success: function (json) {

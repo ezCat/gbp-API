@@ -58,4 +58,4 @@ Route::post('ajax/ajouterProjet', 'ProjetController@store');
 Route::post('ajax/getListeProjet', 'ProjetController@getListe');
 Route::post('ajax/postStatutProjet', 'ProjetController@postStatutProjet');
 
-Route::post('ajax/ajouterFournisseur', 'FournisseurController@store');
+Route::post('ajax/postFournisseur', 'FournisseurController@store');
