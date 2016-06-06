@@ -1,5 +1,3 @@
-@extends('default')
-    
 <body>
 
     <input type="hidden" id="id_user" data-id="{{ session()->get('id_user') }}">

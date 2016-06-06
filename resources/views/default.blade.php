@@ -9,10 +9,10 @@
 <!--     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"> -->
   <script src="{{ asset('js/jquery-2.1.4.js') }}"></script> 
 </head> 
- 
-@yield('sidebar') 
- 
-@yield('content') 
+
+@include('sidebar')
+
+@yield('content')
  
 <script src="{{ asset('js/bootstrap.min.js') }}"></script> 
 <script src="{{ asset('js/jquery.metisMenu.js') }}"></script> 
