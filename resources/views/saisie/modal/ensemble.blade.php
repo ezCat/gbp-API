@@ -22,12 +22,12 @@
                 <th>DIV</th>
             </tr>
             <tr>
-                <td>{{Form::text('', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
-                <td>{{Form::text('', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
-                <td>{{Form::text('', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
-                <td>{{Form::text('', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
-                <td>{{Form::text('', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
-                <td>{{Form::text('', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
+                <td>{{Form::text('be_val_1', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_1' => '1'])}}</td>
+                <td>{{Form::text('be_val_2', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_2' => '2'])}}</td>
+                <td>{{Form::text('be_val_3', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_3' => '3'])}}</td>
+                <td>{{Form::text('be_val_4', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_4' => '4'])}}</td>
+                <td>{{Form::text('be_val_5', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_5' => '5'])}}</td>
+                <td>{{Form::text('be_val_6', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_6' => '6'])}}</td>
             </tr>
         </table>
 
