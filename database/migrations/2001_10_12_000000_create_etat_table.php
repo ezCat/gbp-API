@@ -15,7 +15,6 @@ class CreateEtatTable extends Migration
         Schema::create('etat', function (Blueprint $table) {
             $table->increments('id');
             $table->string('et_libelle')->unique();
-            $table->timestamps();
         });
     }
 
