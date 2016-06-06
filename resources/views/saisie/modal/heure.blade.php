@@ -12,10 +12,10 @@
         {{Form::select('fk_id_ensemble', $array_ensembles, null, ["class" => "form-control"])}}
 
         Ressource affectée :
-        {{Form::select('', $array_ressources, null, ["class" => "form-control"])}}
+        {{Form::select('fk_id_ressource', $array_ressources, null, ["class" => "form-control"])}}
 
         Tâche :
-        {{Form::text('', null, ["class" => "form-control"])}}
+        {{Form::text('h_designation', null, ["class" => "form-control"])}}
 
         Date réalisée :<br>
         <table style="width: 100%; margin-bottom: 10px;">
