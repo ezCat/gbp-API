@@ -14,20 +14,20 @@
         Budget affecté aux heures :<br><br>
         <table width="100%">
             <tr>
-                <th>CDP</th>
-                <th>TEC</th>
-                <th>MET</th>
-                <th>MAINT</th>
-                <th>OPE</th>
-                <th>DIV</th>
+                <th><input type="hidden" name="be_attr_1" value="1">CDP</th>
+                <th><input type="hidden" name="be_attr_2" value="2">TEC</th>
+                <th><input type="hidden" name="be_attr_3" value="3">MET</th>
+                <th><input type="hidden" name="be_attr_4" value="4">MAINT</th>
+                <th><input type="hidden" name="be_attr_5" value="5">OPE</th>
+                <th><input type="hidden" name="be_attr_6" value="6">DIV</th>
             </tr>
             <tr>
-                <td>{{Form::text('be_val_1', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_1' => '1'])}}</td>
-                <td>{{Form::text('be_val_2', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_2' => '2'])}}</td>
-                <td>{{Form::text('be_val_3', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_3' => '3'])}}</td>
-                <td>{{Form::text('be_val_4', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_4' => '4'])}}</td>
-                <td>{{Form::text('be_val_5', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_5' => '5'])}}</td>
-                <td>{{Form::text('be_val_6', null, ["class" => "form-control width-text", "placeholder" => "0", 'be_attr_6' => '6'])}}</td>
+                <td>{{Form::text('be_val_1', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
+                <td>{{Form::text('be_val_2', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
+                <td>{{Form::text('be_val_3', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
+                <td>{{Form::text('be_val_4', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
+                <td>{{Form::text('be_val_5', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
+                <td>{{Form::text('be_val_6', null, ["class" => "form-control width-text", "placeholder" => "0"])}}</td>
             </tr>
         </table>
 
