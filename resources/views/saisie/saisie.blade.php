@@ -42,5 +42,6 @@
         <div class="clearfix"></div>
 
         <script src="{{asset('/js/ajax/postFournisseur.js')}}"></script>
+        <script src="{{asset('/js/ajax/postEnsemble.js')}}"></script>
 
 @endsection

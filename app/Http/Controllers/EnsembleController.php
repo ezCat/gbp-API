@@ -24,7 +24,8 @@ class EnsembleController extends Controller
         if ($request->isMethod('post')) {
 
             // Get id_projet
-            $id_projet = $request->session()->get('id_projet');
+            // $id_projet = $request->session()->get('id_projet');
+            $id_projet = 5;
 
             // Init a new Ensemble
             $ens = new Ensemble();
@@ -35,24 +36,26 @@ class EnsembleController extends Controller
             $ens->en_commentaire = $request->input('en_commentaire');
             $ens->fk_id_projet = $id_projet;
             
+            // dd($ens);
+
             $ens->save();
 
-            $id_ensemble = $ens->id;
+            // $id_ensemble = $ens->id;
 
             // Save BudgetEnsembleHeure
 
             // Loop for each Ressource, save each time
-            for ($i=0; $i < 5; $i++) { 
-                // Init a new BudgetEnsemble
-                $budget_ens = new BudgetEnsemble();
+            // for ($i=1; $i < 6; $i++) { 
+            //     // Init a new BudgetEnsemble
+            //     $budget_ens = new BudgetEnsemble();
 
-                $budget_ens->fk_id_ressource = $request->input("be_attr_".i);
-                $budget_ens->fk_id_ensemble = $id_ensemble;
-                $budget_ens->value = $request->input("be_val_".i);
-                $budget_ens->save();
-            }
+            //     $budget_ens->fk_id_ressource = $request->input("be_attr_".i);
+            //     $budget_ens->fk_id_ensemble = $id_ensemble;
+            //     $budget_ens->value = $request->input("be_val_".i);
+            //     $budget_ens->save();
+            // }
 
-            return response()->json('Ajout effectué !');
+            // return response()->json('Ajout effectué !');
         }
     }
 

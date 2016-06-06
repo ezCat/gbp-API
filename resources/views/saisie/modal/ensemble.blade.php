@@ -6,7 +6,7 @@
 
     <div class="modal-content dark">
         <h2>Ajouter un ensemble</h2>
-        {{Form::open()}}
+        {{Form::open(array('url'=>'#', 'method'=>'POST', 'id'=>'form'))}}
 
         Ensemble :
         {{Form::text('en_libelle', null, ["class" => "form-control"])}}
@@ -37,7 +37,7 @@
         Commentaires :
         {{Form::textarea('en_commentaire', null, ["class" => "form-control"])}}
 
-        <button style="float: right" class="btn btn-validate"><i class="fa fa-arrow-right"></i> Ajouter
+        <button style="float: right" id="aen_submit" class="btn btn-validate"><i class="fa fa-arrow-right"></i> Ajouter
         </button>
 
         {{Form::close()}}
