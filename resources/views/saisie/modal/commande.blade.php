@@ -6,10 +6,10 @@
 
     <div class="modal-content dark">
         <h2>Ajouter une Commande</h2>
-        {{Form::open()}}
+        {{Form::open(array('route'=>'commande.store', 'method'=>'POST', 'id'=>'form_commande'))}}
 
         Ensemble :
-        {{Form::select('c_id', $array_ensembles, null, ["class" => "form-control"])}}
+        {{Form::select('fk_id_ensemble', $array_ensembles, null, ["class" => "form-control"])}}
 
         Fournisseur :
         {{Form::select('fk_id_fournisseur', $array_fournisseurs, null, ["class" => "form-control"])}}
@@ -18,7 +18,7 @@
         {{Form::text('c_designation', null, ["class" => "form-control"])}}
 
         Numéro du bon de commande :
-        {{Form::text('c_numero_bon_commande', null, ["class" => "form-control", "placeholder" => "Exemple : SO160301255"])}}
+        {{Form::text('c_numero_commande', null, ["class" => "form-control", "placeholder" => "Exemple : SO160301255"])}}
 
         Date de la commande :
         {{Form::date('c_date_commande', null, ["class" => "form-control"])}}
