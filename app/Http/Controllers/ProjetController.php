@@ -136,6 +136,10 @@ class ProjetController extends Controller
     public function validationFormProjet(Request $request)
     {
         session()->put('id_projet', $request->input('id_projet'));
+
+        $name_projet = Projet::findOrFail($request->input('id_projet'));
+        session()->put('name_projet', $name_projet->p_libelle);
+
         return view('accueil');
     }
 
