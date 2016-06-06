@@ -6,7 +6,7 @@
 
     <div class="modal-content dark">
         <h2>Ajouter un Fournisseur</h2>
-        {{Form::open(array('url'=>'#', 'method'=>'POST', 'id'=>'form'))}}
+        {{Form::open(array('url'=>'#', 'method'=>'POST', 'id'=>'form_fournisseur'))}}
 
         Fournisseur :
         {{Form::text('libelle', null, ["class" => "form-control"])}}

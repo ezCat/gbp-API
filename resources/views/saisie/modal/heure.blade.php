@@ -6,10 +6,10 @@
 
     <div class="modal-content dark">
         <h2>Ajouter une Heure</h2>
-        {{Form::open()}}
+        {{Form::open(array('route'=>'heure.store', 'method'=>'POST', 'id'=>'form_heure'))}}
 
         Ensemble :
-        {{Form::select('h_fk_id_ensemble', $array_ensembles, null, ["class" => "form-control"])}}
+        {{Form::select('fk_id_ensemble', $array_ensembles, null, ["class" => "form-control"])}}
 
         Ressource affectée :
         {{Form::select('', $array_ressources, null, ["class" => "form-control"])}}

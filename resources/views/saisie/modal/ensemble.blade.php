@@ -6,7 +6,7 @@
 
     <div class="modal-content dark">
         <h2>Ajouter un ensemble</h2>
-        {{Form::open(array('url'=>'#', 'method'=>'POST', 'id'=>'form'))}}
+        {{Form::open(array('url'=>'#', 'method'=>'POST', 'id'=>'form_ensemble'))}}
 
         Ensemble :
         {{Form::text('en_libelle', null, ["class" => "form-control"])}}
