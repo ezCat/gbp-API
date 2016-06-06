@@ -24,8 +24,7 @@ class EnsembleController extends Controller
         if ($request->isMethod('post')) {
 
             // Get id_projet
-            // $id_projet = $request->session()->get('id_projet');
-            $id_projet = 5;
+            $id_projet = $request->input('id_projet');
 
             // Init a new Ensemble
             $ens = new Ensemble();
@@ -35,8 +34,6 @@ class EnsembleController extends Controller
             $ens->en_budget_commande = $request->input('en_budget_commande');
             $ens->en_commentaire = $request->input('en_commentaire');
             $ens->fk_id_projet = $id_projet;
-            
-            // dd($ens);
 
             $ens->save();
 
@@ -55,7 +52,7 @@ class EnsembleController extends Controller
             //     $budget_ens->save();
             // }
 
-            // return response()->json('Ajout effectué !');
+            return response()->json('Ajout effectué !');
         }
     }
 
