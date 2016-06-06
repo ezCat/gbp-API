@@ -8,6 +8,10 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
     // sauvegarde en session l'id du projet choisi et redirige vers l'accueil
     Route::post('accueil', ['as' => 'accueil', 'uses' => 'ProjetController@validationFormProjet']);
 
+    Route::get('ajouter-projet', function () {
+        return view('saisie/ajouter_affaire');
+    });
+
 
     Route::group(['middleware' => ['need.projet']], function () {
 
@@ -16,10 +20,6 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
         });
 
 //	SAISIE
-
-        Route::get('ajouter-projet', function () {
-            return view('saisie/ajouter_affaire');
-        });
         Route::get('saisir-projet', function () {
             return view('saisie/saisie');
         });
