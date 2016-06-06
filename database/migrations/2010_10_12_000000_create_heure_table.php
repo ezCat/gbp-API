@@ -16,7 +16,8 @@ class CreateHeureTable extends Migration
             $table->increments('id');
             $table->longText('h_designation');
             $table->date('h_date_debut');
-            $table->date('h_date_fin');
+            $table->date('h_date_fin')->nullable();
+            $table->float('h_duree_mission')->nullable();
 
             $table->integer('fk_id_ensemble')->unsigned();
             $table->integer('fk_id_etat')->unsigned()->default(1);
