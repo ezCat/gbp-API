@@ -20,9 +20,11 @@ class CreateHeureTable extends Migration
             $table->float('h_duree_mission')->nullable();
 
             $table->integer('fk_id_ensemble')->unsigned();
+            $table->integer('fk_id_ressource')->unsigned();
             $table->integer('fk_id_etat')->unsigned()->default(1);
 
             $table->foreign('fk_id_etat')->references('id')->on('etat');
+            $table->foreign('fk_id_ressource')->references('id')->on('ressource');
             $table->foreign('fk_id_ensemble')->references('id')->on('ensemble');
             $table->timestamps();
         });
