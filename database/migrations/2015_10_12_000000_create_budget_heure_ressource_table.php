@@ -15,6 +15,8 @@ class CreateBudgetHeureRessourceTable extends Migration
         Schema::create('budget_heure_ressource', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->float('value');
+
             $table->integer('fk_id_ensemble')->unsigned();
             $table->integer('fk_id_ressource')->unsigned();
             $table->integer('fk_id_etat')->unsigned()->default(1);

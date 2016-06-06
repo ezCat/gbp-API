@@ -25,11 +25,9 @@ class CreateCommandeTable extends Migration
             $table->integer('fk_id_ensemble')->unsigned();
             $table->integer('fk_id_fournisseur')->unsigned();
 
-
             $table->foreign('fk_id_etat')->references('id')->on('etat');
             $table->foreign('fk_id_ensemble')->references('id')->on('ensemble');
             $table->foreign('fk_id_fournisseur')->references('id')->on('fournisseur');
-
 
             $table->timestamps();
         });

@@ -18,8 +18,8 @@ class Ensemble extends Model
     	return $this->belongsToMany('App\Heure');
     }
 
-    public function HeureBudget() {
-        return $this->belongsToMany('App\HeureBudget');
+    public function BudgetEnsemble() {
+        return $this->belongsToMany('App\BudgetEnsemble');
     }
 
     public function Projet() {

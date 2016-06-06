@@ -15,7 +15,6 @@ class CreateEnsembleTable extends Migration
         Schema::create('ensemble', function (Blueprint $table) {
             $table->increments('id');
             $table->string('en_libelle');
-            $table->float('en_budget_heure')->default(0);
             $table->float('en_budget_commande')->default(0);
             $table->longText('en_commentaire');
 
