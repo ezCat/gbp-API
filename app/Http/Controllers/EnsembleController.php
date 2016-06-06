@@ -42,7 +42,7 @@ class EnsembleController extends Controller
             // Save BudgetEnsembleHeure
 
             // Loop for each Ressource, save each time
-            for ($i=1; $i < 7; $i++) { 
+            for ($i=0; $i < 6; $i++) { 
                 // Init a new BudgetEnsemble
                 $budget_ens = new BudgetEnsemble();
 

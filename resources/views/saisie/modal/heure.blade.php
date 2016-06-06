@@ -9,10 +9,10 @@
         {{Form::open()}}
 
         Ensemble :
-        {{Form::select('h_fk_id_ensemble', ['--Selection--'], null, ["class" => "form-control"])}}
+        {{Form::select('h_fk_id_ensemble', $array_ensembles, null, ["class" => "form-control"])}}
 
         Ressource affectée :
-        {{Form::select('', ['--Selection--'], null, ["class" => "form-control"])}}
+        {{Form::select('', $array_ressources, null, ["class" => "form-control"])}}
 
         Tâche :
         {{Form::text('', null, ["class" => "form-control"])}}

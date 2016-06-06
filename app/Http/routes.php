@@ -20,9 +20,7 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
         });
 
 //	SAISIE
-        Route::get('saisir-projet', function () {
-            return view('saisie/saisie');
-        });
+        Route::get('saisir-projet', 'SaisieController@layout');
 
 //	TABLEAU DE BORD
 

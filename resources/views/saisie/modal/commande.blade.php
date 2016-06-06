@@ -9,10 +9,10 @@
         {{Form::open()}}
 
         Ensemble :
-        {{Form::select('c_id', ['--Selection--'], null, ["class" => "form-control"])}}
+        {{Form::select('c_id', $array_ensembles, null, ["class" => "form-control"])}}
 
         Fournisseur :
-        {{Form::select('fk_id_fournisseur', ['--Selection--'], null, ["class" => "form-control"])}}
+        {{Form::select('fk_id_fournisseur', $array_fournisseurs, null, ["class" => "form-control"])}}
 
         Descriptif de la commande :
         {{Form::text('c_designation', null, ["class" => "form-control"])}}
