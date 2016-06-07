@@ -10,29 +10,10 @@ use App\Http\Controllers\Controller;
 use App\Projet;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class ProjetController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Requete AJAX d'ajout de projet.
      *
@@ -45,6 +26,7 @@ class ProjetController extends Controller
 
             $id_user = $request->input('id_user');
 
+
             $projet = new Projet();
             $projet->p_libelle = $request->input('libelle');
             $projet->save();
@@ -55,35 +37,6 @@ class ProjetController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
@@ -165,7 +118,14 @@ class ProjetController extends Controller
                 ->where('id', '=', $fk_id_etat)
                 ->get();
 
+            $request->session()->set('id_statut_projet', $fk_id_etat);
+            $request->session()->save();
+
             return response()->json($return);
         }
+    }
+
+    public function getSessionIdStatutProjet(Request $request) {
+        return response()->json($request->session()->get('id_statut_projet'));
     }
 }
