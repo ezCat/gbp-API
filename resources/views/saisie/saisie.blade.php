@@ -23,12 +23,8 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
 
-                        @include('saisie.modal.ensemble')
                         @include('saisie.table.ensemble')
-                        @include('saisie.modal.heure')
                         @include('saisie.table.heure')
-                        @include('saisie.modal.commande')
-                        @include('saisie.modal.fournisseur')
                         @include('saisie.table.commande')
 
                     </div>
@@ -39,6 +35,11 @@
 
         </div>
 
+        @include('saisie.modal.ensemble')
+        @include('saisie.modal.heure')
+        @include('saisie.modal.commande')
+        @include('saisie.modal.fournisseur')
+        
         <div class="clearfix"></div>
 
         <script src="{{asset('/js/ajax/postFournisseur.js')}}"></script>
