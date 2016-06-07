@@ -8,7 +8,7 @@ use App\Fournisseur;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class SaisieController extends Controller
 {
@@ -17,7 +17,7 @@ class SaisieController extends Controller
      * Display form and table for the user
      *
      * */
-    public function layout()
+    public function layout(Request $request)
     {
         // Récupération des valuers pour SELECT/OPTION
         $array_ensembles = $this->getListEnsemble();
@@ -25,7 +25,11 @@ class SaisieController extends Controller
         $array_ressources = $this->getListRessource();
         $array_ressources_id = $this->getListRessourceId();
 
-    	return view('saisie.saisie', compact('array_ensembles', 'array_ressources', 'array_fournisseurs', 'array_ressources_id'));
+        // Récupération des données pour feed les tableaux
+        $table_commande = $this->getAllCommande($request);
+        $table_heure = $this->getAllHeure($request);
+
+    	return view('saisie.saisie', compact('array_ensembles', 'array_ressources', 'array_fournisseurs', 'array_ressources_id', 'table_commande', 'table_heure'));
     }
 
     /*
@@ -92,15 +96,61 @@ class SaisieController extends Controller
      *
      * */
     public function getAllEnsemble(Request $request){
-//        $id_projet = $request->session()->get('id_projet');
-        $id_projet = 5;
+        $id_projet = $request->session()->get('id_projet');
         $ensembles = DB::table('ensemble')
-            ->leftJoin('budget_heure_ressource', 'ensemble.id', '=', 'budget_heure_ressource.fk_id_ensemble')
-            ->leftJoin('ressource', 'budget_heure_ressource.fk_id_ressource', '=', 'ressource.id')
-            ->where('ensemble.fk_id_etat', '=', '1')
-            ->where('fk_id_projet', "=", $id_projet)
-            ->get();
+                          ->where('ensemble.fk_id_etat', '=', '1')
+                          ->where('fk_id_projet', "=", $id_projet)
+                          ->get();
 
-        dd($ensembles);
+        return $ensembles;
+    }
+
+    /*
+     * Get data for table : HeureBudget
+     *
+     * */
+    public function getAllHeureBudget(Request $request){
+        $id_projet = $request->session()->get('id_projet');
+        $budgets = DB::table('budget_heure_ressource')
+                        ->leftJoin('ensemble', 'ensemble.id', '=', 'budget_heure_ressource.fk_id_ensemble') 
+                        ->leftJoin('ressource', 'budget_heure_ressource.fk_id_ressource', '=', 'ressource.id') 
+                        ->where('ensemble.fk_id_etat', '=', '1')
+                        ->where('ressource.fk_id_etat', '=', '1')
+                        ->where('fk_id_projet', "=", $id_projet)
+                        ->get();
+
+        return $budgets;
+    }
+
+    /*
+     * Get data for table : Commande
+     *
+     * */
+    public function getAllCommande(Request $request){
+        $id_projet = $request->session()->get('id_projet');
+        $commandes = DB::table('commande')
+                            ->leftJoin('ensemble', 'ensemble.id', '=', 'commande.fk_id_ensemble') 
+                            ->leftJoin('fournisseur', 'commande.fk_id_fournisseur', '=', 'fournisseur.id') 
+                            ->where('commande.fk_id_etat', '=', '1')
+                            ->where('fk_id_projet', "=", $id_projet)
+                            ->get();
+
+        return $commandes;
+    }
+
+    /*
+     * Get data for table : Heure
+     *
+     * */
+    public function getAllHeure(Request $request){
+        $id_projet = $request->session()->get('id_projet');
+        $heures = DB::table('heure')
+                            ->leftJoin('ensemble', 'ensemble.id', '=', 'heure.fk_id_ensemble') 
+                            ->leftJoin('ressource', 'heure.fk_id_ressource', '=', 'ressource.id') 
+                            ->where('heure.fk_id_etat', '=', '1')
+                            ->where('fk_id_projet', "=", $id_projet)
+                            ->get();
+
+        return $heures;
     }
 }
