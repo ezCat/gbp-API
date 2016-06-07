@@ -28,6 +28,13 @@
             </thead>
 
             <tbody>
+
+                @if (empty($table_commande))
+                    <tr>
+                    <td colspan="10">Aucune entrée</td>
+                    </tr>
+                @endif
+
                 @foreach($table_commande as $cmd)
                     <tr>
                         <td style="padding: 25px 0 0 0; text-align: center;">

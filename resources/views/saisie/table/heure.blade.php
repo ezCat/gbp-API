@@ -21,17 +21,23 @@
             </thead>
 
             <tbody>
-            @foreach($table_heure as $heure)
-                <tr>
-                    <td>{{Form::text('en_libelle', $heure->en_libelle, ["class" => "form-tab width-input-text"])}}</td>
-                    <td>{{Form::text('r_libelle', $heure->r_libelle, ["class" => "form-tab width-input-text"])}}</td>
-                    <td>{{Form::text('h_designation', $heure->h_designation, ["class" => "form-tab width-input-text"])}}</td>
-                    <td>{{Form::date('h_date_debut', $heure->h_date_debut, ["class" => "form-tab width-input-text"])}}</td>
-                    <td>{{Form::date('h_date_fin', $heure->h_date_fin, ["class" => "form-tab width-input-text"])}}</td>
-                    <td>{{Form::text('h_duree_mission', $heure->h_duree_mission, ["class" => "form-tab width-input-text"])}}</td>
-                    <td style="padding-top: 15px" class="supprimer-click"><i class="fa fa-close fa-2x"></i></td>
-                </tr>
-            @endforeach
+                @if (empty($table_heure))
+                    <tr>
+                    <td colspan="7">Aucune entrée</td>
+                    </tr>
+                @endif
+
+                @foreach($table_heure as $heure)
+                    <tr>
+                        <td>{{Form::text('en_libelle', $heure->en_libelle, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('r_libelle', $heure->r_libelle, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('h_designation', $heure->h_designation, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::date('h_date_debut', $heure->h_date_debut, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::date('h_date_fin', $heure->h_date_fin, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('h_duree_mission', $heure->h_duree_mission, ["class" => "form-tab width-input-text"])}}</td>
+                        <td style="padding-top: 15px" class="supprimer-click"><i class="fa fa-close fa-2x"></i></td>
+                    </tr>
+                @endforeach
             </tbody>
 
         </table>

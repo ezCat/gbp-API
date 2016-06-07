@@ -36,20 +36,27 @@
             </thead>
 
             <tbody>
-            <tr>
-                <td>{{Form::text('', 'Documentation', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '120000 €', ["class" => "form-tab width-input-number"])}}</td>
-                <td>{{Form::text('', '12 h', ["class" => "form-tab tab-number"])}}</td>
-                <td>{{Form::text('', '21 h', ["class" => "form-tab tab-number"])}}</td>
-                <td>{{Form::text('', '30 h', ["class" => "form-tab tab-number"])}}</td>
-                <td>{{Form::text('', '4 h', ["class" => "form-tab tab-number"])}}</td>
-                <td>{{Form::text('', '1 h', ["class" => "form-tab tab-number"])}}</td>
-                <td>{{Form::text('', '90 h', ["class" => "form-tab tab-number"])}}</td>
-                <td><input type="text" class="form-tab tab-number total-budget-heure" value="572 h"></td>
-                <td>{{Form::text('', 'Aucun commentaire', ["class" => "form-tab width-input-text"])}}</td>
-                <td style="padding-top: 15px" class="supprimer-click"><i
-                            class="fa fa-close fa-2x"></i></td>
-            </tr>
+                @if (empty($table_ensemble))
+                    <tr>
+                    <td colspan="11">Aucune entrée</td>
+                    </tr>
+                @endif
+
+                @foreach($table_ensemble as $ens)
+                    <tr>
+                        <td>{{Form::text('en_libelle', $ens->en_libelle, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('en_budget_commande', $ens->en_budget_commande, ["class" => "form-tab width-input-number"])}}</td>
+                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
+                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
+                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
+                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
+                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
+                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
+                        <td><input type="text" class="form-tab tab-number total-budget-heure" value="0 h"></td>
+                        <td>{{Form::text('en_commentaire', $ens->en_commentaire, ["class" => "form-tab width-input-text"])}}</td>
+                        <td style="padding-top: 15px" class="supprimer-click"><i class="fa fa-close fa-2x"></i></td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
