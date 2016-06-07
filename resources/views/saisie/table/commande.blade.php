@@ -37,7 +37,7 @@
                         <td>{{Form::text('f_libelle', $cmd->f_libelle, ["class" => "form-tab width-input-text"])}}</td>
                         <td>{{Form::text('c_designation', $cmd->c_designation, ["class" => "form-tab width-input-text"])}}</td>
                         <td>{{Form::text('c_numero_commande', $cmd->c_numero_commande, ["class" => "form-tab width-input-text"])}}</td>
-                        <td>{{Form::text('c_date_commande', $cmd->c_date_commande, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::date('c_date_commande', date($cmd->c_date_commande), ["class" => "form-tab width-input-text"])}}</td>
                         <td>{{Form::text('c_prix', $cmd->c_prix, ["class" => "form-tab width-input-text"])}}</td>
                         
                         @if ($cmd->c_insatisfaction_livraison == 1)
