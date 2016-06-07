@@ -28,8 +28,9 @@ class SaisieController extends Controller
         // Récupération des données pour feed les tableaux
         $table_commande = $this->getAllCommande($request);
         $table_heure = $this->getAllHeure($request);
+        $table_ensemble = $this->getAllEnsemble($request);
 
-    	return view('saisie.saisie', compact('array_ensembles', 'array_ressources', 'array_fournisseurs', 'array_ressources_id', 'table_commande', 'table_heure'));
+    	return view('saisie.saisie', compact('array_ensembles', 'array_ressources', 'array_fournisseurs', 'array_ressources_id', 'table_commande', 'table_heure', 'table_ensemble'));
     }
 
     /*
