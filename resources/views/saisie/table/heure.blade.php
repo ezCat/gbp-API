@@ -21,26 +21,17 @@
             </thead>
 
             <tbody>
-            <tr>
-                <td>{{Form::text('', 'Documentation', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', 'MET', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', 'Création du document de qualification', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '05/12/2016', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '07/12/2016', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '5 h', ["class" => "form-tab width-input-text"])}}</td>
-                <td style="padding-top: 15px" class="supprimer-click"><i
-                            class="fa fa-close fa-2x"></i></td>
-            </tr>
-            <tr>
-                <td>{{Form::text('', 'Qualification', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', 'CDP', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', 'Qualification du matériel', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '10/12/2016', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '23/12/2016', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '110 h', ["class" => "form-tab width-input-text"])}}</td>
-                <td style="padding-top: 15px" class="supprimer-click"><i
-                            class="fa fa-close fa-2x"></i></td>
-            </tr>
+            @foreach($table_heure as $heure)
+                <tr>
+                    <td>{{Form::text('en_libelle', $heure->en_libelle, ["class" => "form-tab width-input-text"])}}</td>
+                    <td>{{Form::text('r_libelle', $heure->r_libelle, ["class" => "form-tab width-input-text"])}}</td>
+                    <td>{{Form::text('h_designation', $heure->h_designation, ["class" => "form-tab width-input-text"])}}</td>
+                    <td>{{Form::text('h_date_debut', $heure->h_date_debut, ["class" => "form-tab width-input-text"])}}</td>
+                    <td>{{Form::text('h_date_fin', $heure->h_date_fin, ["class" => "form-tab width-input-text"])}}</td>
+                    <td>{{Form::text('h_duree_mission', $heure->h_duree_mission, ["class" => "form-tab width-input-text"])}}</td>
+                    <td style="padding-top: 15px" class="supprimer-click"><i class="fa fa-close fa-2x"></i></td>
+                </tr>
+            @endforeach
             </tbody>
 
         </table>

@@ -14,8 +14,7 @@
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
-                <th style="width: 5%; text-align: center"><i
-                            class="fa fa-exclamation-triangle"></i></th>
+                <th style="width: 5%; text-align: center"><i class="fa fa-exclamation-triangle"></i></th>
                 <th style="width: 17%">Ensemble</th>
                 <th style="width: 13%">Fournisseur</th>
                 <th style="width: 30%">Descriptif de la commande</th>
@@ -29,41 +28,33 @@
             </thead>
 
             <tbody>
-            <tr>
-                <td style="padding: 25px 0 0 0; text-align: center;">
-                    <i class="fa fa-cog" style="color: red" title="Qualité non conforme"></i>
-                </td>
-                <td>{{Form::text('', 'Colisage', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', 'BABCOCK', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', 'Commande d\'un coffret', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', 'S0160312455', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '07/12/2016', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '1200,52 €', ["class" => "form-tab width-input-text"])}}</td>
-                <td class="check-tab"><input type="checkbox" name="c_insatisfaction_livraison"
-                                             value="1" checked></td>
-                <td class="check-tab"><input type="checkbox" name="c_insatisfaction_qualite"
-                                             value="1"></td>
-                <td style="padding-top: 15px" class="supprimer-click"><i
-                            class="fa fa-close fa-2x"></i></td>
-            </tr>
-            <tr>
-                <td style="padding: 25px 0 0 0; text-align: center;">
-                    <i class="fa fa-clock-o" style="color: red" title="Retard livraison"></i>
-                    <i class="fa fa-cog" style="color: red" title="Qualité non conforme"></i>
-                </td>
-                <td>{{Form::text('', 'Qualification', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', 'CARREFOUR', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', 'Pièces pour barres TO', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', 'S0160312412', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '23/12/2016', ["class" => "form-tab width-input-text"])}}</td>
-                <td>{{Form::text('', '4502,99 €', ["class" => "form-tab width-input-text"])}}</td>
-                <td class="check-tab"><input type="checkbox" name="c_insatisfaction_livraison"
-                                             value="1" checked></td>
-                <td class="check-tab"><input type="checkbox" name="c_insatisfaction_qualite"
-                                             value="1" checked></td>
-                <td style="padding-top: 15px" class="supprimer-click"><i
-                            class="fa fa-close fa-2x"></i></td>
-            </tr>
+                @foreach($table_commande as $cmd)
+                    <tr>
+                        <td style="padding: 25px 0 0 0; text-align: center;">
+                            <i class="fa fa-cog" style="color: red" title="Qualité non conforme"></i>
+                        </td>
+                        <td>{{Form::text('en_libelle', $cmd->en_libelle, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('f_libelle', $cmd->f_libelle, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('c_designation', $cmd->c_designation, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('c_numero_commande', $cmd->c_numero_commande, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('c_date_commande', $cmd->c_date_commande, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('c_prix', $cmd->c_prix, ["class" => "form-tab width-input-text"])}}</td>
+                        
+                        @if ($cmd->c_insatisfaction_livraison == 1)
+                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_livraison" value="1" checked></td>
+                        @else
+                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_livraison" value="1"></td>
+                        @endif
+
+                        @if ($cmd->c_insatisfaction_qualite == 1)
+                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_qualite" value="1" checked></td>
+                        @else
+                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_qualite" value="1"></td>
+                        @endif
+
+                        <td style="padding-top: 15px" class="supprimer-click"><i class="fa fa-close fa-2x"></i></td>
+                    </tr>
+                @endforeach
             </tbody>
 
         </table>
