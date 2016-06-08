@@ -60,6 +60,8 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
     Route::post('ajax/deleteCommande', 'CommandeController@destroy');
     Route::post('ajax/deleteHeure', 'HeureController@destroy');
     Route::post('ajax/deleteFournisseur', 'FournisseurController@destroy');
+    Route::post('ajax/deleteRessource', 'RessourceController@destroy');
+    Route::post('ajax/deleteProjet', 'ProjetController@destroy');
 
     Route::post('ajax/postEnsemble', 'EnsembleController@store');
     Route::post('ajax/postCommande', 'CommandeController@store');

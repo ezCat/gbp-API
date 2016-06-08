@@ -48,9 +48,14 @@ class ProjetController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->input('id');
+
+        Projet::where('id', $id)
+                ->update(['fk_id_etat' => 3]);
+
+        return $id;
     }
 
     /**

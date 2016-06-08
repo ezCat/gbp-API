@@ -11,3 +11,5 @@
 
     </div>
 </div>
+
+<script src="{{asset('/js/ajax/deleteProjet.js')}}"></script>
