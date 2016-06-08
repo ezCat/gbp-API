@@ -9,7 +9,8 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (json) {
                 alert('Le fournisseur ' + json + ' a bien été ajouté.')
-                location.reload();
+                $('input[name=libelle]').html(' ');
+                $('input[name=libelle]').val(' ');
             },
             error: function () {
                 alert('Erreur dans la transmission des données, veuillez réesayer.')
