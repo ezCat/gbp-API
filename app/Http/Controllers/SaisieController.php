@@ -20,7 +20,7 @@ class SaisieController extends Controller
     public function layout(Request $request)
     {
         // Récupération des valuers pour SELECT/OPTION
-        $array_ensembles = $this->getListEnsemble();
+        $array_ensembles = $this->getListEnsemble($request);
         $array_fournisseurs = $this->getListFournisseur();
         $array_ressources = $this->getListRessource();
         $array_ressources_id = $this->getListRessourceId();
@@ -37,8 +37,12 @@ class SaisieController extends Controller
      * Get list of Ensemble
      *
      * */
-    public function getListEnsemble(){
-        $ensembles = Ensemble::all();
+    public function getListEnsemble(Request $request){
+        $id_projet = $request->session()->get('id_projet');
+        $ensembles = DB::table('ensemble')
+                        ->where('fk_id_projet', '=', $id_projet)
+                        ->get();
+                        
         $array_ensembles = array();
         foreach ($ensembles as $ensemble) {
             $array_ensembles[$ensemble->id] = $ensemble->en_libelle;
