@@ -27,7 +27,7 @@
             </tr>
         </table>
 
-        Durée effectif de la tâche :
+        Durée effective de la tâche :
         {{Form::text('h_duree_mission', null, ["class" => "form-control", "placeholder" => "Exemple : 42"])}}
 
         <button style="float: right" class="btn btn-validate"><i class="fa fa-arrow-right"></i> Ajouter
