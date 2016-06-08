@@ -18,7 +18,7 @@
                         @endforeach
                     </select>
 
-                    <button style="float: right" class="btn btn-validate"><i class="fa fa-arrow-right"></i> Ajouter
+                    <button style="float: right" class="btn btn-validate"><i class="fa fa-arrow-right"></i> Valider
                     </button>
 
                     {!! Form::close() !!}
