@@ -22,8 +22,7 @@ class CommandeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $id_ensemble = $request->input('fk_id_ensemble');
         $id_fournisseur = $request->input('fk_id_fournisseur');
 
@@ -50,8 +49,7 @@ class CommandeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         //
     }
 
@@ -61,8 +59,7 @@ class CommandeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
-    {
+    public function destroy(Request $request){
         $id = $request->input('id');
 
         Commande::where('id', $id)
