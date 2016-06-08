@@ -44,6 +44,7 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
         Route::resource('fournisseur', 'FournisseurController');
         Route::resource('heure', 'HeureController');
         Route::resource('commande', 'CommandeController');
+        Route::resource('ensemble', 'EnsembleController');
 
         Route::get('yo', 'SaisieController@getAllHeure');
 
@@ -54,6 +55,11 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
     Route::post('ajax/getListeProjet', 'ProjetController@getListe');
     Route::get('ajax/getStatutProjet', 'ProjetController@getSessionIdStatutProjet');
     Route::post('ajax/postStatutProjet', 'ProjetController@postStatutProjet');
+
+    Route::post('ajax/deleteEnsemble', 'EnsembleController@destroy');
+    Route::post('ajax/deleteCommande', 'CommandeController@destroy');
+    Route::post('ajax/deleteHeure', 'HeureController@destroy');
+    Route::post('ajax/deleteFournisseur', 'FournisseurController@destroy');
 
     Route::post('ajax/postEnsemble', 'EnsembleController@store');
     Route::post('ajax/postCommande', 'CommandeController@store');

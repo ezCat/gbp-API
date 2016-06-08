@@ -59,7 +59,7 @@
                             <td class="check-tab"><input type="checkbox" name="c_insatisfaction_qualite" value="1"></td>
                         @endif
 
-                        <td style="padding-top: 15px" class="supprimer-click"><i class="fa fa-close fa-2x"></i></td>
+                        <td style="padding-top: 15px" class="supprimer-click supprimer-click-commande"><i class="fa fa-close fa-2x"></i></td>
                     </tr>
                 @endforeach
             </tbody>

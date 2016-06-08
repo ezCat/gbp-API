@@ -45,4 +45,9 @@
         <script src="{{asset('/js/ajax/postFournisseur.js')}}"></script>
         <script src="{{asset('/js/ajax/postEnsemble.js')}}"></script>
 
+        <script src="{{asset('/js/ajax/deleteEnsemble.js')}}"></script>
+        <script src="{{asset('/js/ajax/deleteCommande.js')}}"></script>
+        <script src="{{asset('/js/ajax/deleteHeure.js')}}"></script>
+        <script src="{{asset('/js/ajax/deleteFournisseur.js')}}"></script>
+
 @endsection

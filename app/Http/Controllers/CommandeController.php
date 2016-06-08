@@ -11,6 +11,9 @@ use App\Commande;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+
 class CommandeController extends Controller
 {
     /**
@@ -58,8 +61,13 @@ class CommandeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->input('id');
+
+        Commande::where('id', $id)
+                ->update(['fk_id_etat' => 3]);
+
+        return $id;
     }
 }

@@ -54,7 +54,7 @@
                         <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
                         <td><input type="text" class="form-tab tab-number total-budget-heure" value="0 h"></td>
                         <td>{{Form::text('en_commentaire', $ens->en_commentaire, ["class" => "form-tab width-input-text"])}}</td>
-                        <td style="padding-top: 15px" class="supprimer-click"><i class="fa fa-close fa-2x"></i></td>
+                        <td style="padding-top: 15px" class="supprimer-click supprimer-click-ensemble"><i class="fa fa-close fa-2x"></i></td>
                     </tr>
                 @endforeach
             </tbody>

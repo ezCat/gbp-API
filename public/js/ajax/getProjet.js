@@ -17,6 +17,7 @@ $(document).ready(function(){
                             );
                         }
                     });
+                     $('#table-liste-projet').append('<td style="padding-top: 15px" class="supprimer-click"><i class="fa fa-close fa-2x"></i></td>');
                     $('#table-liste-projet').append('</tr>');
                 });
                 $('#table-liste-projet').append('</table>');
