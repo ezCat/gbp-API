@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     $('#aen_submit').on('click', function(event){
         event.preventDefault();
-        var str = $('#form').serialize();
+        var str = $('#form_ensemble').serialize();
         var id_projet = $('#btn-id-projet').attr('data-id');
         
         $.ajax({
