@@ -28,7 +28,7 @@
                 @endif
 
                 @foreach($table_heure as $heure)
-                    <tr>
+                    <tr id="heure-id-{{ $heure->id }}">
                         <td>{{Form::text('en_libelle', $heure->en_libelle, ["class" => "form-tab width-input-text"])}}</td>
                         <td>{{Form::text('r_libelle', $heure->r_libelle, ["class" => "form-tab width-input-text"])}}</td>
                         <td>{{Form::text('h_designation', $heure->h_designation, ["class" => "form-tab width-input-text"])}}</td>

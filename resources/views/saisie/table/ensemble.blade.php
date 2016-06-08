@@ -43,7 +43,7 @@
                 @endif
 
                 @foreach($table_ensemble as $ens)
-                    <tr>
+                    <tr id="ensemble-id-{{ $ens->id }}">
                         <td>{{Form::text('en_libelle', $ens->en_libelle, ["class" => "form-tab width-input-text"])}}</td>
                         <td>{{Form::text('en_budget_commande', $ens->en_budget_commande, ["class" => "form-tab width-input-number"])}}</td>
                         <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>

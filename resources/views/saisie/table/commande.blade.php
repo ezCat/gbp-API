@@ -36,7 +36,7 @@
                 @endif
 
                 @foreach($table_commande as $cmd)
-                    <tr>
+                    <tr id="commande-id-{{ $cmd->id }}">
                         <td style="padding: 25px 0 0 0; text-align: center;">
                             <i class="fa fa-cog" style="color: red" title="Qualité non conforme"></i>
                         </td>
