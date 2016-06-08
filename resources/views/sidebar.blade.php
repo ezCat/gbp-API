@@ -24,9 +24,19 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+
+            @if (empty(session()->get('id_projet')))
+                <li  style="margin: 0px 10px 0 10px">
+                    <button class="btn light-orange" style="font-size: 20; height: 58px;" id="btn-id-projet" data-id=""><b>Aucun projet sélectionné</b></button>
+                </li>
+            @else
                 <li  style="margin: 0px 10px 0 10px">
                     <button class="btn light-orange" style="font-size: 20; height: 58px;" id="btn-id-projet" data-id="{!! session()->get('id_projet') !!}"><b>{!! session()->get('name_projet') !!}</b></button>
                 </li>
+            @endif
+
+
+
                 <li style="margin: 0 25px 0 15px">
                     <select id='change-statut-projet' class="form-control" style="margin: 12px 10px 0 0; background-color: transparent; color: #fff;">
                         <option style="background-color: #4d4d4d; color: #fff" value="4">En cours</option>

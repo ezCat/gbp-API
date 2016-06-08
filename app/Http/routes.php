@@ -12,21 +12,22 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
         return view('saisie/ajouter_affaire');
     });
 
+    Route::get('/', function () {
+        return view('dashboard/general');
+    });
+
+    Route::get('dashboard/general', function () {
+        return view('dashboard/general');
+    });
+
 
     Route::group(['middleware' => ['need.projet']], function () {
-
-        Route::get('/', function () {
-            return view('accueil');
-        });
 
 //	SAISIE
         Route::get('saisir-projet', 'SaisieController@layout');
 
 //	TABLEAU DE BORD
 
-        Route::get('dashboard/general', function () {
-            return view('dashboard/general');
-        });
         Route::get('dashboard/unique', function () {
             return view('dashboard/unique');
         });
