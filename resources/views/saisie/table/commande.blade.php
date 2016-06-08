@@ -18,12 +18,12 @@
                 <th style="width: 17%">Ensemble</th>
                 <th style="width: 13%">Fournisseur</th>
                 <th style="width: 30%">Descriptif de la commande</th>
-                <th style="width: 10%">N° du bon de commande</th>
+                <th style="width: 20%">N° du bon de commande</th>
                 <th style="width: 10%">Date de la commande</th>
                 <th style="width: 10%">Montant</th>
                 <th style="width: 2%">Défaut qualité</th>
                 <th style="width: 2%">Retard livraison</th>
-                <th style="width: 10%; text-align: center">Supprimer</th>
+                <th style="width: 5%; text-align: center">Supprimer</th>
             </tr>
             </thead>
 
