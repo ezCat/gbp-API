@@ -8,6 +8,9 @@ use App\Ensemble;
 use App\BudgetEnsemble;
 use App\Projet;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -74,8 +77,15 @@ class EnsembleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->input('id');
+
+        Ensemble::where('id', $id)
+                ->update(['fk_id_etat' => 3]);
+
+        DB::update('UPDATE budget_heure_ressource set fk_id_etat = 3 where fk_id_ensemble = ?', [$id]);
+
+        return $id;
     }
 }

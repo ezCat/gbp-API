@@ -36,7 +36,7 @@
                 @endif
 
                 @foreach($table_commande as $cmd)
-                    <tr>
+                    <tr id="commande-id-{{ $cmd->id }}">
                         <td style="padding: 25px 0 0 0; text-align: center;">
                             <i class="fa fa-cog" style="color: red" title="Qualité non conforme"></i>
                         </td>
@@ -59,7 +59,7 @@
                             <td class="check-tab"><input type="checkbox" name="c_insatisfaction_qualite" value="1"></td>
                         @endif
 
-                        <td style="padding-top: 15px" class="supprimer-click"><i class="fa fa-close fa-2x"></i></td>
+                        <td style="padding-top: 15px" class="supprimer-click supprimer-click-commande"><i class="fa fa-close fa-2x"></i></td>
                     </tr>
                 @endforeach
             </tbody>

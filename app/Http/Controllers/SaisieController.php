@@ -17,8 +17,7 @@ class SaisieController extends Controller
      * Display form and table for the user
      *
      * */
-    public function layout(Request $request)
-    {
+    public function layout(Request $request){
         // Récupération des valuers pour SELECT/OPTION
         $array_ensembles = $this->getListEnsemble($request);
         $array_fournisseurs = $this->getListFournisseur();
@@ -73,7 +72,7 @@ class SaisieController extends Controller
     public function getListRessourceId(){
         $ressources = Ressource::all();
 
-        // Tableau aidant à l'ajout d'ensemble cf EnsembleController@store + AJAX
+        // Tableau aidant à l'ajout d'ensemble cf EnsembleController@store
         $array_ressources_id = array();
         foreach ($ressources as $ressource) {
             array_push($array_ressources_id, $ressource->id);
@@ -134,9 +133,11 @@ class SaisieController extends Controller
     public function getAllCommande(Request $request){
         $id_projet = $request->session()->get('id_projet');
         $commandes = DB::table('commande')
+                            ->select('commande.id', 'c_designation', "c_numero_commande", "c_date_commande", "c_prix", "c_insatisfaction_qualite", "c_insatisfaction_livraison", 'commande.fk_id_ensemble', "fk_id_fournisseur", 'f_libelle', 'en_libelle')
                             ->leftJoin('ensemble', 'ensemble.id', '=', 'commande.fk_id_ensemble') 
                             ->leftJoin('fournisseur', 'commande.fk_id_fournisseur', '=', 'fournisseur.id') 
                             ->where('commande.fk_id_etat', '=', '1')
+                            ->where('ensemble.fk_id_etat', '=', '1')
                             ->where('fk_id_projet', "=", $id_projet)
                             ->get();
 
@@ -150,6 +151,7 @@ class SaisieController extends Controller
     public function getAllHeure(Request $request){
         $id_projet = $request->session()->get('id_projet');
         $heures = DB::table('heure')
+                            ->select("heure.id", "h_designation", "h_date_debut", "h_date_fin", "h_duree_mission", "heure.fk_id_ensemble", "heure.fk_id_ressource", "heure.fk_id_etat", "en_libelle", "en_budget_commande", "en_commentaire", "ensemble.fk_id_projet", "r_libelle")      
                             ->leftJoin('ensemble', 'ensemble.id', '=', 'heure.fk_id_ensemble') 
                             ->leftJoin('ressource', 'heure.fk_id_ressource', '=', 'ressource.id') 
                             ->where('heure.fk_id_etat', '=', '1')
