@@ -100,10 +100,8 @@ $( document ).ready(function() {
     type: 'GET',
     url: 'http://localhost/gbp-API/public/ajax/getStatutProjet',
     data: {'id_projet': $('#btn-id-projet').attr('data-id')},
-    dataType: 'json',
   })
     .success(function(json) {
-      console.log(json);
       $('#change-statut-projet option[value="' + json + '"]').prop('selected', true);
   })
 

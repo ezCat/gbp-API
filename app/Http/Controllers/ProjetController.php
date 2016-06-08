@@ -126,6 +126,6 @@ class ProjetController extends Controller
     }
 
     public function getSessionIdStatutProjet(Request $request) {
-        return response()->json($request->session()->get('id_statut_projet'));
+        return $request->session()->get('id_statut_projet');
     }
 }
