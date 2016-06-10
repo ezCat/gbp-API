@@ -96,6 +96,11 @@ $( document ).ready(function() {
         color:'#ecf0f1'
   });
 
+  $('.close-modal').on('click', function(e){
+    e.preventDefault();
+    location.reload();
+  })
+
   $.ajax({
     type: 'GET',
     url: 'http://localhost/gbp-API/public/ajax/getStatutProjet',

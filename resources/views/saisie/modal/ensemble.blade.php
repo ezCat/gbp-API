@@ -1,6 +1,6 @@
 <div id="modal-ensemble">
     <!--"THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID-->
-    <div id="btn-close-modal" class="close-modal-ensemble">
+    <div id="btn-close-modal" class="close-modal-ensemble close-modal">
         <button class="btn-close btn-circle"><i class="fa fa-close fa-2x"></i></button>
     </div>
 
