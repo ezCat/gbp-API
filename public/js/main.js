@@ -101,6 +101,18 @@ $( document ).ready(function() {
     location.reload();
   })
 
+var sum = 0;
+
+$('.sum-ensemble-cmd').each(function(){
+    sum += parseFloat(this.value);
+    $('#sum-cmd').html(sum);
+});
+
+$('.sum-ensemble-heure').each(function(){
+    sum += parseFloat($(this).val());
+    $('#sum-heure').html(sum);
+});
+
   $.ajax({
     type: 'GET',
     url: 'http://localhost/gbp-API/public/ajax/getStatutProjet',
