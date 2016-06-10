@@ -29,10 +29,12 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
 //	TABLEAU DE BORD
 
         Route::get('dashboard/unique', function () {
-            return view('dashboard/unique');
+            // return view('dashboard/unique');
+            return view('errors.503');
         });
         Route::get('dashboard/master', function () {
-            return view('dashboard/master');
+            // return view('dashboard/master');
+            return view('errors.503');
         });
 
 //	HELP
