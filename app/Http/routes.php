@@ -47,7 +47,7 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
         Route::resource('commande', 'CommandeController');
         Route::resource('ensemble', 'EnsembleController');
 
-        Route::get('yo', 'SaisieController@getAllHeure');
+        Route::get('yo', 'SaisieController@getAllHeureBudget');
 
     });
 

@@ -115,15 +115,42 @@ class SaisieController extends Controller
      * */
     public function getAllHeureBudget(Request $request){
         $id_projet = $request->session()->get('id_projet');
-        $budgets = DB::table('budget_heure_ressource')
-                        ->leftJoin('ensemble', 'ensemble.id', '=', 'budget_heure_ressource.fk_id_ensemble') 
-                        ->leftJoin('ressource', 'budget_heure_ressource.fk_id_ressource', '=', 'ressource.id') 
-                        ->where('ensemble.fk_id_etat', '=', '1')
-                        ->where('ressource.fk_id_etat', '=', '1')
-                        ->where('fk_id_projet', "=", $id_projet)
-                        ->get();
+        
+        $listensemble = DB::table('ensemble')
+                ->where('ensemble.fk_id_etat', '=', '1')
+                ->where('fk_id_projet', "=", $id_projet)
+                ->get();
 
-        return $budgets;
+        $result = array();
+
+        foreach ($listensemble as $ens) {
+            $budgets = DB::table('budget_heure_ressource')
+                            ->select('ensemble.id AS id_ensemble', 'budget_heure_ressource.value', 'ressource.id AS id_ressource')
+                            ->leftJoin('ensemble', 'ensemble.id', '=', 'budget_heure_ressource.fk_id_ensemble') 
+                            ->leftJoin('ressource', 'budget_heure_ressource.fk_id_ressource', '=', 'ressource.id') 
+                            ->where('ensemble.fk_id_etat', '=', '1')
+                            ->where('ressource.fk_id_etat', '=', '1')
+                            ->where('fk_id_projet', "=", $id_projet)
+                            ->get();
+
+            $heureBudget = array();
+            foreach ($budgets as $k) {
+                $heureBudget = array_merge($heureBudget, array($k->id_ressource => $k->value));
+            }
+
+            $attrEns = array(
+                    'en_libelle' => $ens->id,
+                    'en_commentaire' => $ens->id,
+                    'en_budget_commande' => $ens->id,
+                    );
+
+            $list = array_merge($attrEns, $heureBudget);
+            $array = array($ens->id => $list);
+            $result = array_merge($result, $array);
+
+        }
+
+        return $result;
     }
 
     /*
