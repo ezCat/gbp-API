@@ -38,7 +38,8 @@
                 @foreach($table_commande as $cmd)
                     <tr id="commande-id-{{ $cmd->id }}">
                         <td style="padding: 25px 0 0 0; text-align: center;">
-                            <i class="fa fa-cog" style="color: red" title="Qualité non conforme"></i>
+                            <i class="fa fa-cog hidden" style="color: red" title="Qualité non conforme"></i>
+                            <i class="fa fa-truck hidden" " style="color: red" title="Livraison en retard"></i>
                         </td>
                         <td>{{Form::text('en_libelle', $cmd->en_libelle, ["class" => "form-tab width-input-text"])}}</td>
                         <td>{{Form::text('f_libelle', $cmd->f_libelle, ["class" => "form-tab width-input-text"])}}</td>
