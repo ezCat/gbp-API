@@ -42,18 +42,18 @@
                     </tr>
                 @endif
 
-                @foreach($table_ensemble as $ens)
-                    <tr id="ensemble-id-{{ $ens->id }}">
-                        <td>{{Form::text('en_libelle', $ens->en_libelle, ["class" => "form-tab width-input-text"])}}</td>
-                        <td>{{Form::text('en_budget_commande', $ens->en_budget_commande, ["class" => "form-tab width-input-number"])}}</td>
-                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
-                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
-                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
-                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
-                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
-                        <td>{{Form::text('', '0 h', ["class" => "form-tab tab-number"])}}</td>
+                @foreach($table_ensemble as $yop)
+                    <tr id="ensemble-id-{{ $yop['id'] }}">
+                        <td>{{Form::text('en_libelle', $yop['en_libelle'], ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('en_budget_commande', $yop['en_budget_commande'], ["class" => "form-tab width-input-number"])}}</td>
+                        <td>{{Form::text('be_val_1', $yop['CDP'], ["class" => "form-tab tab-number"])}}</td>
+                        <td>{{Form::text('be_val_2', $yop['TEC'], ["class" => "form-tab tab-number"])}}</td>
+                        <td>{{Form::text('be_val_3', $yop['MET'], ["class" => "form-tab tab-number"])}}</td>
+                        <td>{{Form::text('be_val_4', $yop['MAINT'], ["class" => "form-tab tab-number"])}}</td>
+                        <td>{{Form::text('be_val_5', $yop['OPE'], ["class" => "form-tab tab-number"])}}</td>
+                        <td>{{Form::text('be_val_6', $yop['DIV'], ["class" => "form-tab tab-number"])}}</td>
                         <td><input type="text" class="form-tab tab-number total-budget-heure" value="0 h"></td>
-                        <td>{{Form::text('en_commentaire', $ens->en_commentaire, ["class" => "form-tab width-input-text"])}}</td>
+                        <td>{{Form::text('en_commentaire', $yop['en_commentaire'], ["class" => "form-tab width-input-text"])}}</td>
                         <td style="padding-top: 15px" class="supprimer-click supprimer-click-ensemble"><i class="fa fa-close fa-2x"></i></td>
                     </tr>
                 @endforeach

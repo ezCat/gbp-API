@@ -27,7 +27,7 @@ class SaisieController extends Controller
         // Récupération des données pour feed les tableaux
         $table_commande = $this->getAllCommande($request);
         $table_heure = $this->getAllHeure($request);
-        $table_ensemble = $this->getAllEnsemble($request);
+        $table_ensemble = $this->getAllHeureBudget($request);
 
     	return view('saisie.saisie', compact('array_ensembles', 'array_ressources', 'array_fournisseurs', 'array_ressources_id', 'table_commande', 'table_heure', 'table_ensemble'));
     }
@@ -96,38 +96,25 @@ class SaisieController extends Controller
     }
 
     /*
-     * Get data for table : Ensemble
-     *
-     * */
-    public function getAllEnsemble(Request $request){
-        $id_projet = $request->session()->get('id_projet');
-        $ensembles = DB::table('ensemble')
-                          ->where('ensemble.fk_id_etat', '=', '1')
-                          ->where('fk_id_projet', "=", $id_projet)
-                          ->get();
-
-        return $ensembles;
-    }
-
-    /*
      * Get data for table : HeureBudget
      *
      * */
     public function getAllHeureBudget(Request $request){
         $id_projet = $request->session()->get('id_projet');
-        
+
         $listensemble = DB::table('ensemble')
                 ->where('ensemble.fk_id_etat', '=', '1')
                 ->where('fk_id_projet', "=", $id_projet)
                 ->get();
 
-        $result = array();
+        $ensembles = array();
 
         foreach ($listensemble as $ens) {
             $budgets = DB::table('budget_heure_ressource')
-                            ->select('ensemble.id AS id_ensemble', 'budget_heure_ressource.value', 'ressource.id AS id_ressource')
+                            ->select('ensemble.id AS id_ensemble', 'budget_heure_ressource.value', 'ressource.id AS id_ressource', 'r_libelle')
                             ->leftJoin('ensemble', 'ensemble.id', '=', 'budget_heure_ressource.fk_id_ensemble') 
                             ->leftJoin('ressource', 'budget_heure_ressource.fk_id_ressource', '=', 'ressource.id') 
+                            ->where('ensemble.id', '=', $ens->id)
                             ->where('ensemble.fk_id_etat', '=', '1')
                             ->where('ressource.fk_id_etat', '=', '1')
                             ->where('fk_id_projet', "=", $id_projet)
@@ -135,22 +122,29 @@ class SaisieController extends Controller
 
             $heureBudget = array();
             foreach ($budgets as $k) {
-                $heureBudget = array_merge($heureBudget, array($k->id_ressource => $k->value));
+                $heureBudget = array_merge($heureBudget, array($k->r_libelle => $k->value));
             }
 
             $attrEns = array(
-                    'en_libelle' => $ens->id,
-                    'en_commentaire' => $ens->id,
-                    'en_budget_commande' => $ens->id,
+                    'id' => $ens->id,
+                    'en_libelle' => $ens->en_libelle,
+                    'en_commentaire' => $ens->en_commentaire,
+                    'en_budget_commande' => $ens->en_budget_commande,
                     );
 
             $list = array_merge($attrEns, $heureBudget);
             $array = array($ens->id => $list);
-            $result = array_merge($result, $array);
+            $ensembles = array_merge($ensembles, $array);
 
         }
 
-        return $result;
+        // $ensembles = json_encode($ensembles);
+        // foreach ($ensembles as $ens) {
+        //     print_r($ensembles);
+        // }
+
+        // dd($ensembles);
+        return $ensembles;
     }
 
     /*
