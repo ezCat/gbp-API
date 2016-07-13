@@ -46,12 +46,22 @@
                     <tr id="ensemble-id-{{ $yop['id'] }}">
                         <td>{{Form::text('en_libelle', $yop['en_libelle'], ["class" => "form-tab width-input-text", "disabled"])}}</td>
                         <td>{{Form::text('en_budget_commande', $yop['en_budget_commande'], ["class" => "form-tab width-input-number sum-ensemble-cmd updatable-ensemble"])}}</td>
-                        <td>{{Form::text('be_val_1', $yop['0'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '1'])}}</td>
-                        <td>{{Form::text('be_val_2', $yop['1'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '2'])}}</td>
-                        <td>{{Form::text('be_val_3', $yop['2'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '3'])}}</td>
-                        <td>{{Form::text('be_val_4', $yop['3'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '4'])}}</td>
-                        <td>{{Form::text('be_val_5', $yop['4'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '5'])}}</td>
-                        <td>{{Form::text('be_val_6', $yop['5'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '6'])}}</td>
+
+                        {{-- 
+
+                            Foreach sur les ressources actives
+                            automatise le chiffre 1 devient $list_ressource->id
+
+                         --}}
+
+                        <td>{{Form::text('be_val_1', $yop['1'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '1'])}}<b> h</b></td>
+                        <td>{{Form::text('be_val_2', $yop['2'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '2'])}}<b> h</b></td>
+                        <td>{{Form::text('be_val_3', $yop['3'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '3'])}}<b> h</b></td>
+                        <td>{{Form::text('be_val_4', $yop['4'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '4'])}}<b> h</b></td>
+                        <td>{{Form::text('be_val_5', $yop['5'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '5'])}}<b> h</b></td>
+                        <td>{{Form::text('be_val_6', $yop['6'], ["class" => "form-tab tab-number sum-ensemble-heure updatable-budgetheure", "data-id_ressource" => '6'])}}<b> h</b></td>
+
+
                         <!-- <td><input type="text" class="form-tab tab-number total-budget-heure" value="0 h"></td> -->
                         <td>{{Form::text('en_commentaire', $yop['en_commentaire'], ["class" => "form-tab width-input-text updatable-ensemble"])}}</td>
                         <td style="padding-top: 15px" class="supprimer-click supprimer-click-ensemble"><i class="fa fa-close fa-2x"></i></td>

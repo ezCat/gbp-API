@@ -18,7 +18,7 @@ class User extends Authenticatable
         return $this->hasOne('App\Etat');
     }
 
-    public function Projet() {
+    public function projets() {
     	return $this->belongsToMany('App\Projet', 'projet_utilisateur', 'fk_id_utilisateur', 'fk_id_projet');
     }
 }

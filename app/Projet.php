@@ -10,11 +10,11 @@ class Projet extends Model
 
     protected $table = "projet";
 
-    public function Ensemble() {
-    	return $this->belongsToMany('App\Ensemble');
+    public function ensembles() {
+    	return $this->hasMany('App\Ensemble', 'fk_id_projet');
     }
 
-    public function User() {
+    public function users() {
     	return $this->belongsToMany('App\User', 'projet_utilisateur', 'fk_id_projet', 'fk_id_utilisateur');
     }
 

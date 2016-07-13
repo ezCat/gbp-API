@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ensemble;
+use App\Projet;
 use App\Ressource;
 use App\Fournisseur;
 
@@ -133,28 +134,15 @@ class SaisieController extends Controller
     public function getAllHeureBudget(Request $request){
         $id_projet = $request->session()->get('id_projet');
 
-        $listensemble = DB::table('ensemble')
-                ->where('ensemble.fk_id_etat', '=', '1')
-                ->where('fk_id_projet', "=", $id_projet)
-                ->orderBy('en_libelle')
-                ->get();
+        $projet = Projet::findOrFail($id_projet);
 
         $ensembles = array();
 
-        foreach ($listensemble as $ens) {
-            $budgets = DB::table('budget_heure_ressource')
-                            ->select('ensemble.id AS id_ensemble', 'budget_heure_ressource.value', 'ressource.id AS id_ressource', 'r_libelle')
-                            ->leftJoin('ensemble', 'ensemble.id', '=', 'budget_heure_ressource.fk_id_ensemble') 
-                            ->leftJoin('ressource', 'budget_heure_ressource.fk_id_ressource', '=', 'ressource.id') 
-                            ->where('ensemble.id', '=', $ens->id)
-                            ->where('ensemble.fk_id_etat', '=', '1')
-                            ->where('ressource.fk_id_etat', '=', '1')
-                            ->where('fk_id_projet', "=", $id_projet)
-                            ->get();
+        foreach ($projet->ensembles as $ens) {
 
             $heureBudget = array();
-            foreach ($budgets as $k) {
-                $heureBudget = array_merge($heureBudget, array($k->id_ressource => $k->value));
+            foreach ($ens->ressources as $budget) {
+                $heureBudget +=  array($budget->pivot->fk_id_ressource => $budget->pivot->value);
             }
 
             $attrEns = array(
@@ -164,18 +152,13 @@ class SaisieController extends Controller
                     'en_budget_commande' => $ens->en_budget_commande,
                     );
 
-            $list = array_merge($attrEns, $heureBudget);
+            $list = $attrEns;
+            $list += $heureBudget;
             $array = array($ens->id => $list);
             $ensembles = array_merge($ensembles, $array);
 
         }
 
-        // $ensembles = json_encode($ensembles);
-        // foreach ($ensembles as $ens) {
-        //     print_r($ensembles);
-        // }
-
-        // dd($ensembles);
         return $ensembles;
     }
 

@@ -21,4 +21,8 @@ class Ressource extends Model
     public function Etat() {
         return $this->hasOne('App\Etat');
     }
+
+    public function ensembles() {
+        return $this->belongsToMany('App\Ensemble', 'budget_heure_ressource', 'fk_id_ressource', 'fk_id_ensemble')->withPivot('value');
+    }
 }

@@ -18,12 +18,12 @@ class Ensemble extends Model
     	return $this->belongsToMany('App\Heure');
     }
 
-    public function BudgetEnsemble() {
-        return $this->belongsToMany('App\BudgetEnsemble');
+    public function ressources() {
+        return $this->belongsToMany('App\Ressource', 'budget_heure_ressource', 'fk_id_ensemble', 'fk_id_ressource')->withPivot('value');
     }
 
-    public function Projet() {
-    	return $this->hasOne('App\Projet');
+    public function projets() {
+    	return $this->belongsTo('App\Projet');
     }
 
     public function Etat() {
