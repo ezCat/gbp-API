@@ -9,7 +9,7 @@
         {{Form::open(array('url'=>'#', 'method'=>'POST', 'id'=>'form_ensemble'))}}
 
         Ensemble :
-        {{Form::text('en_libelle', null, ["class" => "form-control", "required"])}}
+        {{Form::text('en_libelle', null, ["class" => "form-control"])}}
 
         Budget affecté aux heures :<br><br>
         <table width="100%">
@@ -43,7 +43,7 @@
         
 
         Budget affecté aux commandes :
-        {{Form::text('en_budget_commande', null, ["class" => "form-control", "placeholder" => "Exemple : 1280", "required"])}}
+        {{Form::text('en_budget_commande', null, ["class" => "form-control", "placeholder" => "Exemple : 1280"])}}
 
         Commentaires :
         {{Form::textarea('en_commentaire', null, ["class" => "form-control"])}}

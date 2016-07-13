@@ -39,8 +39,9 @@ class HeureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
-        //
+    public function update(Request $request){
+        Heure::where('id', $request->input('id'))
+            ->update([$request->input('attr') => $request->input('value')]);
     }
 
     /**

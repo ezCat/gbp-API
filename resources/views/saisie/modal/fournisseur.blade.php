@@ -9,7 +9,9 @@
         {{Form::open(array('url'=>'#', 'method'=>'POST', 'id'=>'form_fournisseur'))}}
 
         Fournisseur :
-        {{Form::text('libelle', null, ["class" => "form-control"])}}
+        <div class="ui-widget">
+            {{Form::text('libelle', null, ["class" => "form-control", 'id' => "tag_fournisseur"])}}
+        </div>
 
         <button style="float: right" class="btn btn-validate" id="af_submit"><i class="fa fa-arrow-right"></i> Ajouter
         </button>

@@ -18,7 +18,7 @@
         {{Form::text('c_designation', null, ["class" => "form-control"])}}
 
         Numéro du bon de commande :
-        {{Form::text('c_numero_commande', null, ["class" => "form-control", "placeholder" => "Exemple : SO160301255"])}}
+        {{Form::text('c_numero_commande', null, ["class" => "form-control", "placeholder" => "Exemple : S0160301255"])}}
 
         Date de la commande :
         {{Form::date('c_date_commande', null, ["class" => "form-control"])}}

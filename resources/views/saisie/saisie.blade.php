@@ -48,6 +48,12 @@
         <script src="{{asset('/js/ajax/deleteEnsemble.js')}}"></script>
         <script src="{{asset('/js/ajax/deleteCommande.js')}}"></script>
         <script src="{{asset('/js/ajax/deleteHeure.js')}}"></script>
-        <script src="{{asset('/js/ajax/deleteFournisseur.js')}}"></script>
+
+        <script src="{{asset('/js/ajax/updateCommande.js')}}"></script>
+        <script src="{{asset('/js/ajax/updateHeure.js')}}"></script>
+        <script src="{{asset('/js/ajax/updateEnsemble.js')}}"></script>
+        <script src="{{asset('/js/ajax/updateHeureBudget.js')}}"></script>
+
+        <script src="{{asset('/js/ajax/getListFournisseur.js')}}"></script>
 
 @endsection

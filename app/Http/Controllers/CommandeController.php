@@ -49,8 +49,9 @@ class CommandeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
-        //
+    public function update(Request $request){
+        Commande::where('id', $request->input('id'))
+            ->update([$request->input('attr') => $request->input('value')]);
     }
 
     /**

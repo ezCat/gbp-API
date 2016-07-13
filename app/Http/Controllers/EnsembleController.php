@@ -66,9 +66,25 @@ class EnsembleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        Ensemble::where('id', $request->input('id'))
+            ->update([$request->input('attr') => $request->input('value')]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateHeureBudget(Request $request)
+    {
+        DB::table('budget_heure_ressource')
+                ->where('fk_id_ensemble', $request->input('id_ensemble'))
+                ->where('fk_id_ressource', $request->input('id_ressource'))
+                ->update(['value' => $request->input('value')]);
     }
 
     /**
@@ -81,7 +97,7 @@ class EnsembleController extends Controller
     {
         $id = $request->input('id');
 
-        Ensemble::where('id', $id)
+        Ensemble::where('id', '=', $id)
                 ->update(['fk_id_etat' => 3]);
 
         DB::update('UPDATE budget_heure_ressource set fk_id_etat = 3 where fk_id_ensemble = ?', [$id]);

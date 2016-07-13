@@ -39,7 +39,9 @@ class SaisieController extends Controller
     public function getListEnsemble(Request $request){
         $id_projet = $request->session()->get('id_projet');
         $ensembles = DB::table('ensemble')
+                        ->where('ensemble.fk_id_etat', '=', '1')
                         ->where('fk_id_projet', '=', $id_projet)
+                        ->orderBy('en_libelle')
                         ->get();
                         
         $array_ensembles = array();
@@ -55,7 +57,10 @@ class SaisieController extends Controller
      *
      * */
     public function getListRessource(){
-        $ressources = Ressource::all();
+        $ressources = DB::table('ressource')
+                ->where('ressource.fk_id_etat', '=', '1')
+                ->orderBy('r_libelle')
+                ->get();
 
         $array_ressources = array();
         foreach ($ressources as $ressource) {
@@ -70,7 +75,10 @@ class SaisieController extends Controller
      *
      * */
     public function getListRessourceId(){
-        $ressources = Ressource::all();
+        $ressources = DB::table('ressource')
+        ->where('ressource.fk_id_etat', '=', '1')
+        ->orderBy('r_libelle')
+        ->get();
 
         // Tableau aidant à l'ajout d'ensemble cf EnsembleController@store
         $array_ressources_id = array();
@@ -86,10 +94,33 @@ class SaisieController extends Controller
      *
      * */
     public function getListFournisseur(){
-        $fournisseurs = Fournisseur::all();
+        $fournisseurs = DB::table('fournisseur')
+        ->where('fournisseur.fk_id_etat', '=', '1')
+        ->orderBy('f_libelle')
+        ->get();
+
         $array_fournisseurs = array();
         foreach ($fournisseurs as $fournisseur) {
             $array_fournisseurs[$fournisseur->id] = $fournisseur->f_libelle;
+        }
+
+        return $array_fournisseurs;
+    }
+
+    /*
+     * Get list of Fournisseur
+     *
+     * */
+    public function getListFournisseurAutocomplete(){
+        $fournisseurs = DB::table('fournisseur')
+        ->select('f_libelle')
+        ->where('fournisseur.fk_id_etat', '=', '1')
+        ->orderBy('f_libelle')
+        ->get();
+
+        $array_fournisseurs = array();
+        foreach ($fournisseurs as $f) {
+            array_push($array_fournisseurs, $f->f_libelle);
         }
 
         return $array_fournisseurs;
@@ -105,6 +136,7 @@ class SaisieController extends Controller
         $listensemble = DB::table('ensemble')
                 ->where('ensemble.fk_id_etat', '=', '1')
                 ->where('fk_id_projet', "=", $id_projet)
+                ->orderBy('en_libelle')
                 ->get();
 
         $ensembles = array();
@@ -122,7 +154,7 @@ class SaisieController extends Controller
 
             $heureBudget = array();
             foreach ($budgets as $k) {
-                $heureBudget = array_merge($heureBudget, array($k->r_libelle => $k->value));
+                $heureBudget = array_merge($heureBudget, array($k->id_ressource => $k->value));
             }
 
             $attrEns = array(
@@ -160,6 +192,7 @@ class SaisieController extends Controller
                             ->where('commande.fk_id_etat', '=', '1')
                             ->where('ensemble.fk_id_etat', '=', '1')
                             ->where('fk_id_projet', "=", $id_projet)
+                            ->orderBy('en_libelle')
                             ->get();
 
         return $commandes;
@@ -177,6 +210,7 @@ class SaisieController extends Controller
                             ->leftJoin('ressource', 'heure.fk_id_ressource', '=', 'ressource.id') 
                             ->where('heure.fk_id_etat', '=', '1')
                             ->where('fk_id_projet', "=", $id_projet)
+                            ->orderBy('en_libelle')
                             ->get();
 
         return $heures;
