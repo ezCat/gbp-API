@@ -31,7 +31,7 @@ class ProjetController extends Controller
             $projet->p_libelle = $request->input('libelle');
             $projet->save();
 
-            $projet->User()->attach($id_user);
+            $projet->users()->attach($id_user);
 
             return response()->json(Input::get('libelle'));
         }

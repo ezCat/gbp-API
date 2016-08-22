@@ -175,7 +175,7 @@ class SaisieController extends Controller
                             ->where('commande.fk_id_etat', '=', '1')
                             ->where('ensemble.fk_id_etat', '=', '1')
                             ->where('fk_id_projet', "=", $id_projet)
-                            ->orderBy('en_libelle')
+                            ->orderBy('f_libelle')
                             ->get();
 
         return $commandes;
