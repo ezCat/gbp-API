@@ -34,7 +34,7 @@
                         <td>{{Form::text('h_designation', $heure->h_designation, ["class" => "form-tab width-input-text updatable-heure"])}}</td>
                         <td>{{Form::date('h_date_debut', $heure->h_date_debut, ["class" => "form-tab width-input-text updatable-heure"])}}</td>
                         <td>{{Form::date('h_date_fin', $heure->h_date_fin, ["class" => "form-tab width-input-text updatable-heure"])}}</td>
-                        <td>{{Form::text('h_duree_mission', $heure->h_duree_mission, ["class" => "form-tab width-input-text updatable-heure"])}}</td>
+                        <td>{{Form::text('h_duree_mission', $heure->h_duree_mission.' h', ["class" => "form-tab width-input-text updatable-heure"])}}</td>
                         <td style="padding-top: 15px" class="supprimer-click supprimer-click-heure"><i class="fa fa-close fa-2x"></i></td>
                     </tr>
                 @endforeach

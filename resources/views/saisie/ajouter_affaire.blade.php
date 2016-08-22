@@ -20,7 +20,7 @@
                     {!! Form::open(array('url'=>'#','method'=>'POST', 'id'=>'form')) !!}
 
                     <label>Nom du projet :</label>
-                    {{Form::text('libelle', null, ['class' => 'form-control', "placeholder" => "Entrez le nom du nouveau projet..."])}}
+                    {{Form::text('libelle', null, ['class' => 'form-control', "placeholder" => "Entrez le nom du nouveau projet...", "required"])}}
 
                     <button id='aa_submit' class="btn btn-validate" style="float: right;">
                         <i class="fa fa-arrow-right"></i> Soumettre

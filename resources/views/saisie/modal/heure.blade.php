@@ -15,7 +15,7 @@
         {{Form::select('fk_id_ressource', $array_ressources, null, ["class" => "form-control"])}}
 
         Tâche :
-        {{Form::text('h_designation', null, ["class" => "form-control"])}}
+        {{Form::text('h_designation', null, ["class" => "form-control", "required"])}}
 
         Date réalisée :<br>
         <table style="width: 100%; margin-bottom: 10px;">
@@ -28,7 +28,7 @@
         </table>
 
         Durée effective de la tâche :
-        {{Form::text('h_duree_mission', null, ["class" => "form-control", "placeholder" => "Exemple : 42"])}}
+        {{Form::text('h_duree_mission', null, ["class" => "form-control", "placeholder" => "Exemple : 42", "required"])}}
 
         <button style="float: right" class="btn btn-validate"><i class="fa fa-arrow-right"></i> Ajouter
         </button>

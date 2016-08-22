@@ -20,7 +20,6 @@
             <br>
             <div class="row">
                 <div class="col-sm-12">
-                    <!-- Tab panes -->
                     <div class="tab-content">
 
                         @include('saisie.table.ensemble')

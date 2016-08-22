@@ -46,7 +46,7 @@
                         <td>{{Form::text('c_designation', $cmd->c_designation, ["class" => "form-tab width-input-text updatable-commande"])}}</td>
                         <td>{{Form::text('c_numero_commande', $cmd->c_numero_commande, ["class" => "form-tab width-input-text updatable-commande"])}}</td>
                         <td>{{Form::date('c_date_commande', $cmd->c_date_commande, ["class" => "form-tab width-input-text updatable-commande"])}}</td>
-                        <td>{{Form::text('c_prix', $cmd->c_prix, ["class" => "form-tab width-input-text updatable-commande"])}}</td>
+                        <td>{{Form::text('c_prix', $cmd->c_prix.' €', ["class" => "form-tab width-input-text updatable-commande"])}}</td>
                         
                         @if ($cmd->c_insatisfaction_livraison == 1)
                             <td class="check-tab"><input type="checkbox" name="c_insatisfaction_livraison" class="updatable-commande" value="1" checked></td>
