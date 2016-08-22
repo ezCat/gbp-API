@@ -10,11 +10,11 @@ class User extends Authenticatable
 
     protected $table = "utilisateur";
 
-    public function Role() {
+    public function roles() {
     	return $this->hasOne('App\Role');
     }
 
-    public function Etat() {
+    public function etats() {
         return $this->hasOne('App\Etat');
     }
 

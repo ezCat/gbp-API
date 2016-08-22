@@ -10,15 +10,15 @@ class Heure extends Model
 
     protected $table = "heure";
 
-    public function Ressource() {
+    public function ressources() {
     	return $this->hasOne('App\Ressource');
     }
 
-    public function Ensemble() {
+    public function ensembles() {
     	return $this->hasOne('App\Ensemble');
     }
 
-    public function Etat() {
+    public function etats() {
         return $this->hasOne('App\Etat');
     }
 }

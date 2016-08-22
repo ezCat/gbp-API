@@ -10,11 +10,11 @@ class Fournisseur extends Model
 
     protected $table = "fournisseur";
 
-    public function Commande() {
+    public function commandes() {
     	return $this->belongsToMany('App\Commande');
     }
 
-    public function Etat() {
+    public function etats() {
         return $this->hasOne('App\Etat');
     }
 }

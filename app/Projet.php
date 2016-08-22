@@ -18,15 +18,15 @@ class Projet extends Model
     	return $this->belongsToMany('App\User', 'projet_utilisateur', 'fk_id_projet', 'fk_id_utilisateur');
     }
 
-    public function Livrable() {
+    public function livrables() {
     	return $this->belongsToMany('App\Livrable', 'projet_livrable', 'fk_id_projet', 'fk_id_livrable');
     }
 
-    public function InformationGenerale() {
+    public function informationGenerales() {
     	return $this->belongsToMany('App\InformationGenerale', 'projet_information_generale', 'fk_id_projet', 'fk_id_information_generale');
     }
 
-    public function Etat() {
+    public function etats() {
         return $this->hasOne('App\Etat');
     }
 }

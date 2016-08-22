@@ -10,15 +10,15 @@ class BudgetEnsemble extends Model
 
     protected $table = "budget_heure_ressource";
 
-    public function ensemble() {
+    public function ensembles() {
     	return $this->belongsTo('App\Ensemble')->withPivot('value');
     }
 
-    public function Ressource() {
+    public function ressources() {
         return $this->hasOne('App\Ressource');
     }
 
-    public function Etat() {
+    public function etats() {
         return $this->hasOne('App\Etat');
     }
 }

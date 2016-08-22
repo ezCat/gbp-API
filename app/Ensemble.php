@@ -10,11 +10,11 @@ class Ensemble extends Model
 
     protected $table = "ensemble";
 
-    public function Commande() {
+    public function commandes() {
     	return $this->belongsToMany('App\Commande');
     }
 
-    public function Heure() {
+    public function heures() {
     	return $this->belongsToMany('App\Heure');
     }
 
@@ -26,7 +26,7 @@ class Ensemble extends Model
     	return $this->belongsTo('App\Projet');
     }
 
-    public function Etat() {
+    public function etats() {
         return $this->hasOne('App\Etat');
     }
 }

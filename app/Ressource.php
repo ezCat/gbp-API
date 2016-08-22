@@ -10,15 +10,15 @@ class Ressource extends Model
 
     protected $table = "ressource";
 
-    public function Heure() {
+    public function heures() {
     	return $this->belongsToMany('App\Heure');
     }
 
-    public function HeureEnsemble() {
+    public function heureEnsembles() {
     	return $this->belongsToMany('App\HeureEnsemble');
     }
 
-    public function Etat() {
+    public function etats() {
         return $this->hasOne('App\Etat');
     }
 
