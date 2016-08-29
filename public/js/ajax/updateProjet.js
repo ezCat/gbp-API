@@ -1,7 +1,5 @@
 $(document).on('change', '.updatable-projet', function(){
-		var field = $(this).closest("tr").attr("id");
-        var id = field.match(/\d/g);
-        id = id.join("");
+        var id = $(this).closest("tr").attr("id");
 		var attr = $(this).attr('name');
 		var value = $(this).val();
 		var data = "value=" + value +"&attr=" + attr +"&id=" + id;
@@ -11,7 +9,7 @@ $(document).on('change', '.updatable-projet', function(){
 			url: "http://localhost/gbp-API/public/ajax/updateProjet",
 			data: {'id': id, "value": value, 'attr': attr},
 			success: function(){
-				// 
+				console.log("ok");
 			}
 		 });
 	});

@@ -7,9 +7,19 @@
     <div class="modal-content dark">
         <h2>Projets existants</h2>
 
-        <div id="table-liste-projet"></div>
+        <hr>
+
+        <table class="table" id="table-liste-projet">
+        	<tr>
+        		<th>Nom projet</th>
+        		<th>Commentaires</th>
+        		<th>Chef de projet</th>
+        		<th style="text-align: center">Supprimer</th>
+        	</tr>
+        </table>
 
     </div>
 </div>
 
+<script src="{{asset('/js/ajax/updateProjet.js')}}"></script>
 <script src="{{asset('/js/ajax/deleteProjet.js')}}"></script>

@@ -37,9 +37,15 @@ class ProjetController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    /**
+    * Update de projet
+    * @param  \Illuminate\Http\Request $request
+    * 
+    */
+    public function update(Request $request)
     {
-        //
+        Projet::where('id', $request->input('id'))
+            ->update([$request->input('attr') => $request->input('value')]);
     }
 
     /**
@@ -70,6 +76,7 @@ class ProjetController extends Controller
             ->join('projet_utilisateur', 'projet_utilisateur.fk_id_projet', '=', 'projet.id')
             ->join('utilisateur', 'projet_utilisateur.fk_id_utilisateur', '=', 'utilisateur.id')
             ->join('etat', 'projet.fk_id_etat', '=', 'etat.id')
+            ->orderBy('projet.p_libelle')
             ->get();
         return response()->json($listProjet);
     }
