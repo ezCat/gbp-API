@@ -120,10 +120,15 @@ class ProjetController extends Controller
 
             $fk_id_etat = $request->input('etat');
             $id = $request->input('id_projet');
+            $now = date('Y-m-d');
 
             DB::table('projet')
                 ->where('id', '=', $id)
                 ->update(['fk_id_etat' => $fk_id_etat]);
+
+            DB::table('projet')
+                ->where('id', '=', $id)
+                ->update(['p_date_solde' => $now]);   
 
             $return = DB::table('etat')
                 ->select('id', 'et_libelle')
