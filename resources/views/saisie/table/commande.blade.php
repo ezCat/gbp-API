@@ -38,8 +38,13 @@
                 @foreach($table_commande as $cmd)
                     <tr id="commande-id-{{ $cmd->id }}">
                         <td style="padding: 25px 0 0 0; text-align: center;">
-                            <i class="fa fa-cog hidden" style="color: red" title="Qualité non conforme"></i>
-                            <i class="fa fa-truck hidden" style="color: red" title="Livraison en retard"></i>
+                            @if ($cmd->c_insatisfaction_livraison == 1)
+                                <i class="fa fa-truck" style="color: red" title="Livraison en retard"></i>
+                            @endif
+
+                            @if ($cmd->c_insatisfaction_qualite == 1)
+                                <i class="fa fa-cog " style="color: red" title="Qualité non conforme"></i>
+                            @endif
                         </td>
                         <td>{{Form::text('en_libelle', $cmd->en_libelle, ["class" => "form-tab width-input-text", "disabled"])}}</td>
                         <td>{{Form::text('f_libelle', $cmd->f_libelle, ["class" => "form-tab width-input-text", "disabled"])}}</td>
@@ -49,15 +54,15 @@
                         <td>{{Form::text('c_prix', $cmd->c_prix.' €', ["class" => "form-tab width-input-text updatable-commande"])}}</td>
                         
                         @if ($cmd->c_insatisfaction_livraison == 1)
-                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_livraison" class="updatable-commande" value="1" checked></td>
+                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_livraison" class="updatable-commande" checked></td>
                         @else
-                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_livraison" class="updatable-commande" value="1"></td>
+                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_livraison" class="updatable-commande"></td>
                         @endif
 
                         @if ($cmd->c_insatisfaction_qualite == 1)
-                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_qualite" class="updatable-commande" value="1" checked></td>
+                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_qualite" class="updatable-commande" checked></td>
                         @else
-                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_qualite" class="updatable-commande" value="1"></td>
+                            <td class="check-tab"><input type="checkbox" name="c_insatisfaction_qualite" class="updatable-commande"></td>
                         @endif
 
                         <td style="padding-top: 15px" class="supprimer-click supprimer-click-commande"><i class="fa fa-close fa-2x"></i></td>
