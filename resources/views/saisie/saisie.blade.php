@@ -55,4 +55,13 @@
 
         <script src="{{asset('/js/ajax/getListFournisseur.js')}}"></script>
 
+        <script type="text/javascript">
+            $(document).ready(function(event) {
+                $('.nav-tabs a').on('shown.bs.tab', function (e) {
+                    window.location.hash = e.target.hash;
+                })
+                $('ul.nav.nav-tabs a[href="'+ window.location.hash+ '"]').tab('show');
+            });
+        </script>
+
 @endsection
