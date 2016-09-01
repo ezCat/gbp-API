@@ -101,38 +101,12 @@
     
     <div class="modal-content dark">
         <h2>Bilan des heures par ressource<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
-        <table id="table-group" class="table" style="width: 100%">
-          <thead>
-             <tr>
- 			        <th>Ressource</th>
-              <th>Ensemble</th>
-              <th>Descriptif de l'heure</th>
-              <th>Début</th>
-              <th>Fin</th>
-              <th>Heures</th>
-            </tr> 
-          </thead>
+        
+        <div style="margin-left:20px; width: 100%;">
+            <table id="heure-ressource-bu"></table>
+            <div id="pager-hr"></div>
+        </div>
 
-          <tbody>
-             <tr>
-              <td>Chef de projet</td>
-              <td>Colisage</td>
-              <td>Création du packaging</td>
-              <td>02/01/2015</td>
-              <td>25/01/2015</td>
-              <td>300 h</td>
-            </tr> 
-            <tr>
-			  <td>Chef de projet</td>
-              <td>Qualification</td>
-              <td>Par EDF</td>
-              <td>02/01/2015</td>
-              <td>21/01/2015</td>
-              <td>800 h</td>
-            </tr> 
-          </tbody>
-
-        </table>
     </div>
 </div>
 
@@ -146,38 +120,12 @@
     
     <div class="modal-content dark">
         <h2>Bilan des heures par ensemble<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
-        <table id="table-group" class="table" style="width: 100%">
-          <thead>
-             <tr>
- 			  <th>Ensemble</th>
- 			  <th>Ressource</th> 
- 			  <th>Descriptif de l'heure</th>
-              <th>Début</th>
-              <th>Fin</th>
-              <th>Heures</th>
-            </tr> 
-          </thead>
+        
+        <div style="margin-left:20px; width: 100%;">
+            <table id="heure-ensemble-bu"></table>
+            <div id="pager-he"></div>
+        </div>
 
-          <tbody>
-             <tr>
-              <td>Colisage</td>
-              <td>Chef de projet</td>
-              <td>Création du packaging</td>
-              <td>02/01/2015</td>
-              <td>25/01/2015</td>
-              <td>300 h</td>
-            </tr> 
-            <tr>
-              <td>Qualification</td>
-			  <td>Chef de projet</td>
-              <td>Par EDF</td>
-              <td>02/01/2015</td>
-              <td>21/01/2015</td>
-              <td>800 h</td>
-            </tr> 
-          </tbody>
-
-        </table>
     </div>
 </div>
 
@@ -191,38 +139,12 @@
     
     <div class="modal-content dark">
         <h2>Bilan des commandes par ensemble<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
-        <table id="table-group" class="table" style="width: 100%">
-          <thead>
-             <tr>
-              <th>Ensemble</th>
- 			  <th>Fournisseur</th>
-              <th>Descriptif de la commande</th>
-              <th>N° Bon de commande</th>
-              <th>Date</th>
-              <th>Montant</th>
-            </tr> 
-          </thead>
+        
+        <div style="margin-left:20px; width: 100%;">
+            <table id="commande-ensemble-bu"></table>
+            <div id="pager-ce"></div>
+        </div>
 
-          <tbody>
-             <tr>
-              <td>Colisage</td>
-              <td>Nivea</td>
-              <td>Valise en plastique renforcé</td>
-              <td>S0152203602</td>
-              <td>15/01/2015</td>
-              <td>10 000 €</td>
-            </tr> 
-            <tr>
-              <td>Qualification</td>
-              <td>Leclerc</td>
-              <td>Têtes en carbone</td>
-              <td>S0152203614</td>
-              <td>18/01/2015</td>
-              <td>4 000 €</td>
-            </tr> 
-          </tbody>
-
-        </table>
     </div>
 </div>
 
@@ -236,38 +158,12 @@
     
     <div class="modal-content dark">
         <h2>Bilan des commandes par fournisseur<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
-        <table id="table-group" class="table" style="width: 100%">
-          <thead>
-             <tr>
- 			  <th>Fournisseur</th>
-              <th>Ensemble</th>
-              <th>Descriptif de la commande</th>
-              <th>N° Bon de commande</th>
-              <th>Date</th>
-              <th>Montant</th>
-            </tr> 
-          </thead>
+        
+        <div style="margin-left:20px; width: 100%;">
+            <table id="commande-fournisseur-bu"></table>
+            <div id="pager-cf"></div>
+        </div>
 
-          <tbody>
-             <tr>
-              <td>Nivea</td>
-              <td>Colisage</td>
-              <td>Valise en plastique renforcé</td>
-              <td>S0152203602</td>
-              <td>15/01/2015</td>
-              <td>10 000 €</td>
-            </tr> 
-            <tr>
-              <td>Leclerc</td>
-              <td>Qualification</td>
-              <td>Têtes en carbone</td>
-              <td>S0152203614</td>
-              <td>18/01/2015</td>
-              <td>4 000 €</td>
-            </tr> 
-          </tbody>
-
-        </table>
     </div>
 </div>
 
@@ -341,5 +237,133 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#commande-ensemble-bu").jqGrid({
+        url: 'http://localhost/gbp-API/public/ajax/getCommandeEnsembleBU',
+        mtype: "GET",
+        datatype: "json",
+        colModel: [
+            { label: 'Ensemble', name: 'en_libelle', key: true, width: 150 },
+            { label: 'Fournisseur', name: 'f_libelle', width: 150 },
+            { label: 'Désignation', name: 'c_designation', width: 150 },
+            { label: 'Date commande', name: 'c_date_commande', width: 150 },
+            { label: 'Montant (en €)', name: 'c_prix', width: 100, formatter: 'number', summaryTpl: "Sum: {0}", summaryType: "sum" }
+        ],
+        loadonce: true,
+        width: null,
+        height: 380,
+        rowNum: 30,
+        rowList:[20,30,50],
+        sortname: 'OrderDate',
+        pager: "#pager-ce",
+        viewrecords: true,
+        grouping: true,
+        groupingView: {
+            groupField: ["en_libelle"],
+            groupColumnShow: [true],
+            groupText: ["<b>{0}</b>"],
+            groupOrder: ["asc"],
+            groupSummary: [true],
+            groupCollapse: false
+            
+        }
+    });
+
+    $("#commande-fournisseur-bu").jqGrid({
+        url: 'http://localhost/gbp-API/public/ajax/getCommandeFournisseurBU',
+        mtype: "GET",
+        datatype: "json",
+        colModel: [
+            { label: 'Fournisseur', name: 'f_libelle', width: 150 },
+            { label: 'Ensemble', name: 'en_libelle', key: true, width: 150 },
+            { label: 'Désignation', name: 'c_designation', width: 150 },
+            { label: 'Date commande', name: 'c_date_commande', width: 150 },
+            { label: 'Montant (en €)', name: 'c_prix', width: 100, formatter: 'number', summaryTpl: "Sum: {0}", summaryType: "sum" }
+        ],
+        loadonce: true,
+        width: null,
+        height: 380,
+        rowNum: 30,
+        rowList:[20,30,50],
+        sortname: 'OrderDate',
+        pager: "#pager-cf",
+        viewrecords: true,
+        grouping: true,
+        groupingView: {
+            groupField: ["f_libelle"],
+            groupColumnShow: [true],
+            groupText: ["<b>{0}</b>"],
+            groupOrder: ["asc"],
+            groupSummary: [true],
+            groupCollapse: false
+            
+        }
+    });
+
+    $("#heure-ensemble-bu").jqGrid({
+        url: 'http://localhost/gbp-API/public/ajax/getHeureEnsembleBU',
+        mtype: "GET",
+        datatype: "json",
+        colModel: [
+            { label: 'Ensemble', name: 'en_libelle', key: true, width: 150 },
+            { label: 'Ressource', name: 'r_libelle', width: 150 },
+            { label: 'Date début', name: 'h_date_debut', width: 150 },
+            { label: 'Date fin', name: 'h_date_fin', width: 150 },
+            { label: 'Durée effective (en h)', name: 'h_duree_mission', width: 100, formatter: 'number', summaryTpl: "Sum: {0}", summaryType: "sum" }
+        ],
+        loadonce: true,
+        width: null,
+        height: 380,
+        rowNum: 30,
+        rowList:[20,30,50],
+        sortname: 'OrderDate',
+        pager: "#pager-he",
+        viewrecords: true,
+        grouping: true,
+        groupingView: {
+            groupField: ["en_libelle"],
+            groupColumnShow: [true],
+            groupText: ["<b>{0}</b>"],
+            groupOrder: ["asc"],
+            groupSummary: [true],
+            groupCollapse: false
+            
+        }
+    });
+
+    $("#heure-ressource-bu").jqGrid({
+        url: 'http://localhost/gbp-API/public/ajax/getHeureRessourceBU',
+        mtype: "GET",
+        datatype: "json",
+        colModel: [
+            { label: 'Ressource', name: 'r_libelle', width: 150 },
+            { label: 'Ensemble', name: 'en_libelle', key: true, width: 150 },
+            { label: 'Date début', name: 'h_date_debut', width: 150 },
+            { label: 'Date fin', name: 'h_date_fin', width: 150 },
+            { label: 'Durée effective (en h)', name: 'h_duree_mission', width: 100, formatter: 'number', summaryTpl: "Sum: {0}", summaryType: "sum" }
+        ],
+        loadonce: true,
+        width: null,
+        height: 380,
+        rowNum: 30,
+        rowList:[20,30,50],
+        sortname: 'OrderDate',
+        pager: "#pager-hr",
+        viewrecords: true,
+        grouping: true,
+        groupingView: {
+            groupField: ["r_libelle"],
+            groupColumnShow: [true],
+            groupText: ["<b>{0}</b>"],
+            groupOrder: ["asc"],
+            groupSummary: [true],
+            groupCollapse: false
+            
+        }
+    });
+
+  });
+</script>
 
 @endsection

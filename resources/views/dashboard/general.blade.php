@@ -18,27 +18,11 @@
     
     <div class="modal-content dark">
         <h2>Liste des projets existants<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
-        
-        <table class="table" style="width: 100%">
-          <thead>
-             <tr>
-              <th>Nom du projet</th>
-              <th>Etat du projet</th>
-            </tr> 
-          </thead>
 
-          <tbody>
-             <tr class="italic">
-              <td>LHP N4</td>
-              <td>Soldé</td>
-            </tr> 
-            <tr>
-              <td>PROJET Z</td>
-              <td>En cours</td>
-            </tr> 
-          </tbody>
-
-        </table>
+        <div style="margin-left:20px; width: 100%;">
+            <table id="liste-affaire-bilan"></table>
+            <div id="pager-lab"></div>
+        </div>
     </div>
 </div>
 
@@ -129,43 +113,12 @@
     
     <div class="modal-content dark">
         <h2>Bilan des commandes par fournisseur<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
-        <table class="table" style="width: 100%">
-          <thead>
-             <tr>
-              <th>Fournisseur</th>
-              <th>Nom du projet</th>
-              <th>Montant (en €)</th>
-            </tr> 
-          </thead>
+        
+        <div style="margin-left:20px; width: 100%;">
+            <table id="commande-bilan"></table>
+            <div id="pager-comb"></div>
+        </div>
 
-          <tbody>
-             <tr>
-              <td>Fournisseur X</td>
-              <td class="italic">LHP N4</td>
-              <td class="italic sum">16000</td>
-            </tr> 
-            <tr>
-              <td>Fournisseur X</td>
-              <td class="italic">LHP N4</td>
-              <td class="italic sum">16000</td>
-            </tr>
-            <tr>
-              <td colspan="2" style="text-align: right">Somme :</td>
-              <td class="subtotal"></td>
-            </tr>
-            <tr>
-              <td>Fournisseur Y</td>
-              <td>PROJET Z</td>
-              <td class="sum">1640</td>
-            </tr> 
-            <tr>
-              <td>Fournisseur Z</td>
-              <td class="italic">LHP N4</td>
-              <td class="italic sum">1414</td>
-            </tr> 
-          </tbody>
-
-        </table>
     </div>
 </div>
 
@@ -179,37 +132,10 @@
     
     <div class="modal-content dark">
         <h2>Bilan des heures par ressource<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
-        <table class="table" style="width: 100%">
-          <thead>
-             <tr>
-              <th>Ressource</th>
-              <th>Nom du projet</th>
-              <th>Nombre d'heures</th>
-            </tr> 
-          </thead>
 
-          <tbody>
-             <tr>
-              <td>Méthodes</td>
-              <td class="italic">LHP N4</td>
-              <td class="italic sum">1616</td>
-            </tr> 
-            <tr>
-              <td>Méthodes</td>
-              <td>PROJET Z</td>
-              <td class="sum">166</td>
-            </tr> 
-            <tr>
-              <td colspan="2" style="text-align: right">Somme :</td>
-              <td class="subtotal"></td>
-            </tr>
-            <tr>
-              <td>Bureau d'études</td>
-              <td class="italic">LHP N4</td>
-              <td class="italic sum">140</td>
-            </tr> 
-          </tbody>
-        </table>
+            <table id="heure-bilan"></table>
+            <div id="pager-heub"></div>
+
     </div>
 </div>
 
@@ -218,14 +144,14 @@
   <h3>Tableau de bord : Tous Projets</h3>
 </div>
 
-<div class="col-sm-5" style="text-align: right">
+{{-- <div class="col-sm-5" style="text-align: right">
   Choisir l'état des projets :
   <select class="form-control" style="display: inline-block; width: auto;">
     <option>Tous projets</option>
     <option>Projets soldés</option>
     <option>Projets en cours</option>
   </select>
-</div>
+</div> --}}
 </div>
 <hr/>
 
@@ -294,21 +220,114 @@
 </div>
 
 <script type="text/javascript">
-$(function(){
-  function tally (selector) {
-    $(selector).each(function () {
-      var total = 0,
-        column = $(this).siblings(selector).andSelf().index(this);
-      $(this).parents().prevUntil(':has(' + selector + ')').each(function () {
-        total += parseFloat($('td.sum:eq(' + column + ')', this).html()) || 0;
-      })
-      $(this).html(total);
+  $(function(){
+    function tally (selector) {
+      $(selector).each(function () {
+        var total = 0,
+          column = $(this).siblings(selector).andSelf().index(this);
+        $(this).parents().prevUntil(':has(' + selector + ')').each(function () {
+          total += parseFloat($('td.sum:eq(' + column + ')', this).html()) || 0;
+        })
+        $(this).html(total);
+      });
+    }
+    tally('td.subtotal');
+    tally('td.total');
+  });
+</script>
+
+{{-- Liste affaire tableau --}}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#liste-affaire-bilan").jqGrid({
+            url: 'http://localhost/gbp-API/public/ajax/getListeProjetBilan',
+            mtype: "GET",
+            styleUI : 'Bootstrap',
+            datatype: "json",
+            colModel: [
+                { label: 'Nom du projet', name: 'p_libelle', key: true, width: 250 },
+                { label: 'Chef de projet', name: 'nom', width: 150 },
+                { label: 'Commentaire', name: 'p_commentaire', width: 200 },
+                { label: 'Etat', name: 'et_libelle', width: 50 }
+            ],
+            viewrecords: true,
+            height: 380,
+            width: null,
+            rowNum: 40,
+            pager: "#pager-lab"
+        });
     });
-  }
-  tally('td.subtotal');
-  tally('td.total');
-});
- 
+</script>
+
+{{-- Bilan commande tableau --}}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#commande-bilan").jqGrid({
+            url: 'http://localhost/gbp-API/public/ajax/getCommandeBilan',
+            mtype: "GET",
+            datatype: "json",
+            colModel: [
+                { label: 'Fournisseur', name: 'f_libelle', key: true, width: 150 },
+                { label: 'Projet', name: 'p_libelle', width: 150 },
+                { label: 'Total (en €)', name: 'total_prix', width: 100, formatter: 'number', summaryTpl: "Sum: {0}", summaryType: "sum" }
+            ],
+            loadonce: true,
+            width: null,
+            height: 380,
+            rowNum: 30,
+            rowList:[20,30,50],
+            sortname: 'OrderDate',
+            pager: "#pager-comb",
+            viewrecords: true,
+            grouping: true,
+            groupingView: {
+                groupField: ["f_libelle"],
+                groupColumnShow: [true],
+                groupText: ["<b>{0}</b>"],
+                groupOrder: ["asc"],
+                groupSummary: [true],
+                groupCollapse: false
+                
+            }
+        });
+    });
+</script>
+
+{{-- Bilan heure tableau --}}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+            $("#heure-bilan").jqGrid({
+                url: 'http://localhost/gbp-API/public/ajax/getHeureBilan',
+                mtype: "GET",
+                datatype: "json",
+                colModel: [
+                    { label: 'Ressource', name: 'r_libelle', key: true, width: 150 },
+                    { label: 'Projet', name: 'p_libelle', width: 150 },
+                    { label: 'Total (en h)', name: 'total_heure', width: 100, formatter: 'number', summaryTpl: "Sum: {0}", summaryType: "sum" }
+                ],
+                loadonce: true,
+                width: null,
+                height: 380,
+                rowNum: 30,
+                rowList:[20,30,50],
+                sortname: 'OrderDate',
+                pager: "#pager-heub",
+                viewrecords: true,
+                grouping: true,
+                groupingView: {
+                    groupField: ["r_libelle"],
+                    groupColumnShow: [true],
+                    groupText: ["<b>{0}</b>"],
+                    groupOrder: ["asc"],
+                    groupSummary: [true],
+                    groupCollapse: false
+                    
+                }
+            });
+    });
 </script>
 
 @endsection

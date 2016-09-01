@@ -29,12 +29,12 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
 //	TABLEAU DE BORD
 
         Route::get('dashboard/unique', function () {
-            // return view('dashboard/unique');
-            return view('errors.503');
+            return view('dashboard/unique');
+            // return view('errors.503');
         });
         Route::get('dashboard/master', function () {
-            // return view('dashboard/master');
-            return view('errors.503');
+            return view('dashboard/master');
+            // return view('errors.503');
         });
 
 //	HELP
@@ -49,17 +49,38 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
         Route::resource('commande', 'CommandeController');
         Route::resource('ensemble', 'EnsembleController');
 
-        Route::get('go', 'ProjetController@getListe');
+        Route::get('go', 'DashboardController@getCommandeFournisseurBU');
 
     });
 
     // AJAX
+
+    // Ajout projet
     Route::post('ajax/ajouterProjet', 'ProjetController@store');
     Route::post('ajax/getListeProjet', 'ProjetController@getListe');
+
+    // Dashboard general
+    Route::get('ajax/getListeProjetBilan', 'DashboardController@getListeProjetBG');
+    Route::get('ajax/getCommandeBilan', 'DashboardController@getCommandeBG');
+    Route::get('ajax/getHeureBilan', 'DashboardController@getHeureBG');
+
+    // Dashboard unique
+    Route::get('ajax/getHeureEnsembleBU', 'DashboardController@getHeureEnsembleBU');
+    Route::get('ajax/getHeureRessourceBU', 'DashboardController@getHeureRessourceBU');
+    Route::get('ajax/getCommandeFournisseurBU', 'DashboardController@getCommandeFournisseurBU');
+    Route::get('ajax/getCommandeEnsembleBU', 'DashboardController@getCommandeEnsembleBU');
+
+    // Dashboard master
+        
+
+    // Gestion statut projet
     Route::get('ajax/getStatutProjet', 'ProjetController@getSessionIdStatutProjet');
     Route::post('ajax/postStatutProjet', 'ProjetController@postStatutProjet');
+    
+    // autocompletion fournisseur
     Route::get('ajax/getListFournisseur', 'SaisieController@getListFournisseur');
 
+    // AJAX routes pour saisie projet
     Route::post('ajax/deleteEnsemble', 'EnsembleController@destroy');
     Route::post('ajax/deleteCommande', 'CommandeController@destroy');
     Route::post('ajax/deleteHeure', 'HeureController@destroy');

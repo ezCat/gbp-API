@@ -2,7 +2,7 @@
 
 @section('content')
 
-        <!-- Modal satisfaction -->
+<!-- Modal satisfaction -->
 <div class="modal fade" id="modal-satisfaction-client" tabindex="-1" role="dialog"
      aria-labelledby="modal-satisfaction-client" aria-hidden="true">
     <div class="modal-dialog">
