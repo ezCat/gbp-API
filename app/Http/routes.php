@@ -12,13 +12,8 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
         return view('saisie/ajouter_affaire');
     });
 
-    Route::get('/', function () {
-        return view('dashboard/general');
-    });
-
-    Route::get('dashboard/general', function () {
-        return view('dashboard/general');
-    });
+    Route::get('/', 'DashboardController@showBG');
+    Route::get('dashboard/general', 'DashboardController@showBG');
 
 
     Route::group(['middleware' => ['need.projet']], function () {
@@ -28,14 +23,8 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
 
 //	TABLEAU DE BORD
 
-        Route::get('dashboard/unique', function () {
-            return view('dashboard/unique');
-            // return view('errors.503');
-        });
-        Route::get('dashboard/master', function () {
-            return view('dashboard/master');
-            // return view('errors.503');
-        });
+        Route::get('dashboard/unique', 'DashboardController@showBU');
+        Route::get('dashboard/master', 'DashboardController@showMA');
 
 //	HELP
 
