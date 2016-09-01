@@ -10,13 +10,13 @@
         <table class="table table-striped table-bordered" width="100%">
             <thead>
             <tr>
-                <th style="width: 20%">Ensemble</th>
-                <th style="width: 15%">Ressource</th>
-                <th style="width: 20%">Tâche</th>
-                <th style="width: 8%">Début</th>
-                <th style="width: 8%">Fin</th>
-                <th style="width: 5%">Durée effective</th>
-                <th style="width: 5%; text-align: center">Supprimer</th>
+                <th style="width: 20%; text-align: center; vertical-align: middle">Ensemble</th>
+                <th style="width: 15%; text-align: center; vertical-align: middle">Ressource</th>
+                <th style="width: 20%; text-align: center; vertical-align: middle">Tâche</th>
+                <th style="width: 8%; text-align: center; vertical-align: middle">Début</th>
+                <th style="width: 8%; text-align: center; vertical-align: middle">Fin</th>
+                <th style="width: 5%; text-align: center; vertical-align: middle">Durée effective</th>
+                <th style="width: 5%;; text-align: center; vertical-align: middle">Supprimer</th>
             </tr>
             </thead>
 

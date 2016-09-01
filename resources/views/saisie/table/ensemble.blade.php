@@ -16,22 +16,19 @@
         <table class="table table-striped table-bordered" width="100%">
             <thead>
             <tr>
-                <th colspan="2"></th>
-                <th colspan="6">Heures planifiées</th>
-                <th colspan="3"></th>
+                <th style="width: 20%; text-align: center; vertical-align: middle" rowspan="2">Ensemble</th>
+                <th style="width: 10%; text-align: center;; vertical-align: middle" rowspan="2">Budget planifié</th>
+                <th colspan="6" style="text-align: center;">Heures planifiées</th>
+                <th style="width: 20%; text-align: center;; vertical-align: middle" rowspan="2">Commentaires</th>
+                <th style="text-align: center; width: 5%; vertical-align: middle" rowspan="2">Supprimer</th>
             </tr>
             <tr>
-                <th style="width: 20%">Ensemble</th>
-                <th style="width: 10%">Budget planifié</th>
                 <th style="width: 5%">CDP</th>
                 <th style="width: 5%">TEC</th>
                 <th style="width: 5%">MET</th>
                 <th style="width: 5%">MAINT</th>
                 <th style="width: 5%">OPE</th>
                 <th style="width: 5%">DIV</th>
-                <!-- <th style="width: 5%">Total</th> -->
-                <th style="width: 20%">Commentaires</th>
-                <th style="text-align: center; width: 5%">Supprimer</th>
             </tr>
             </thead>
 

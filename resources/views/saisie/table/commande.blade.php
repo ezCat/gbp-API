@@ -14,16 +14,16 @@
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
-                <th style="width: 5%; text-align: center"><i class="fa fa-exclamation-triangle"></i></th>
-                <th style="width: 17%">Ensemble</th>
-                <th style="width: 13%">Fournisseur</th>
-                <th style="width: 30%">Descriptif de la commande</th>
-                <th style="width: 20%">N° du bon de commande</th>
-                <th style="width: 10%">Date de la commande</th>
-                <th style="width: 10%">Montant</th>
-                <th style="width: 2%">Défaut qualité</th>
-                <th style="width: 2%">Retard livraison</th>
-                <th style="width: 5%; text-align: center">Supprimer</th>
+                <th style="width: 5%; text-align: center; vertical-align: middle"><i class="fa fa-exclamation-triangle"></i></th>
+                <th style="width: 17%; text-align: center; vertical-align: middle">Ensemble</th>
+                <th style="width: 13%; text-align: center; vertical-align: middle">Fournisseur</th>
+                <th style="width: 30%; text-align: center; vertical-align: middle">Descriptif de la commande</th>
+                <th style="width: 20%; text-align: center; vertical-align: middle">N° du bon de commande</th>
+                <th style="width: 10%; text-align: center; vertical-align: middle">Date de la commande</th>
+                <th style="width: 10%; text-align: center; vertical-align: middle">Montant</th>
+                <th style="width: 2%; text-align: center; vertical-align: middle">Défaut qualité</th>
+                <th style="width: 2%; text-align: center; vertical-align: middle">Retard livraison</th>
+                <th style="width: 5%; text-align: center; vertical-align: middle">Supprimer</th>
             </tr>
             </thead>
 
