@@ -8,7 +8,7 @@
 <input type="hidden" id="active_menu" value="unique">
 
 <div  class="col-sm-12">
-<h3>Tableau de bord : LHP N4</h3>
+<h3>Tableau de bord : <b>{!! session()->get('name_projet') !!}</b></h3>
 <hr/>
 </div>
 
@@ -173,21 +173,13 @@
 
 		<h3>Informations générales sur le projet</h3>
 
-		<br>
-
-		<h4>Nom du projet : <b>LHP N4</b></h4>
-
-		<br>
-
-		<h4>Heures prévues : <b>160 h</b></h4>
-
-		<h4>Heures réalisées : <b>124 h</b></h4>
+		<h4>Heures prévues : <b>{{ $data['heure_prev'] }} h</b></h4>
+		<h4>Heures réalisées : <b>{{ $data['heure_rel'] }} h</b></h4>
 
 		<br>
 
-		<h4>Montant des commandes prévues : <b>12000 €</b></h4>
-
-		<h4>Montant des commandes réalisées : <b>11000 €</b></h4>
+		<h4>Montant des commandes prévues : <b>{{ $data['comm_prev'] }} €</b></h4>
+		<h4>Montant des commandes réalisées : <b>{{ $data['comm_rel'] }} €</b></h4>
 
 	</div>
 	<div class="col-sm-7">

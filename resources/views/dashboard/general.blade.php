@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="page-wrapper" >
+<div id="page-wrapper">
 <div id="page-inner">
 
 <input type="hidden" id="active_menu" value="general">
@@ -140,18 +140,9 @@
 </div>
 
 <div class="row">
-<div class="col-sm-7">
-  <h3>Tableau de bord : Tous Projets</h3>
-</div>
-
-{{-- <div class="col-sm-5" style="text-align: right">
-  Choisir l'état des projets :
-  <select class="form-control" style="display: inline-block; width: auto;">
-    <option>Tous projets</option>
-    <option>Projets soldés</option>
-    <option>Projets en cours</option>
-  </select>
-</div> --}}
+  <div class="col-sm-7">
+    <h3>Tableau de bord : Tous Projets</h3>
+  </div>
 </div>
 <hr/>
 
@@ -161,41 +152,65 @@
 
 		<h3>Informations générales sur la base projet</h3>
 
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-5">
+        <h4>Sélectionner une année :</h4>
+      </div>
+      <div class="col-sm-2">
+        <select id="select_date" class="form-control" style="margin-top: 3px;">
+          <option>2016</option>
+          <option>2017</option>
+          <option>2018</option>
+          <option>2019</option>
+          <option>2020</option>
+          <option>2021</option>
+          <option>2022</option>
+          <option>2023</option>
+          <option>2024</option>
+          <option>2025</option>
+          <option>2026</option>
+        </select>
+      </div>
+    </div>
+
+    <hr>
+
+    <br>
+
+		<h4>Nombre de projet soldés : <b><span id="nbProjetSolde"></span></b></h4>
+		<h4>Nombre de projet en cours : <b><span id="nbProjetEnCours"></span></b></h4>
+
 		<br>
 
-		<h4>Nombre de projet soldés: <b>14</b></h4>
-
-		<h4>Nombre de projet en cours: <b>7</b></h4>
-
-		<br>
-
-		<h4>Heures prévues totales : <b>16150 h</b></h4>
-
-		<h4>Heures réalisées totales: <b>12544 h</b></h4>
+		<h4>Heures prévues totales : <b><span id="heure_prev"></span> h</b></h4>
+		<h4>Heures réalisées totales : <b><span id="heure_reel"></span> h</b></h4>
 
 		<br>
 
-		<h4>Total des commandes prévues: <b>1212000 €</b></h4>
-
-		<h4>Total des commandes réalisées : <b>1145000 €</b></h4>
+		<h4>Total des commandes prévues : <b><span id="comm_prev"></span> €</b></h4>
+		<h4>Total des commandes réalisées : <b><span id="comm_reel"></span> €</b></h4>
 
 	</div>
 	<div class="col-sm-7">
 		<div class="row" style="margin-top: 20px">
 			
 			<a href="#modal-liste-affaire" id="btn-liste-affaire"><div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="panel back-dash light-orange">
+            <div class="panel back-dash light-orange">
                        <i class="fa fa-file-text-o fa-3x"></i><strong> &nbsp; LISTE AFFAIRE</strong>
                      <p class="text-muted">Cliquez ici pour ouvrir la liste des projets en cours ou soldés. Cette liste reprend plusieurs informations générales sur les différents projets.</p>
                 </div>
-            </div></a>
+            </div>
+      </a>
 
 			<a href="#modal-etat-global-general" id="btn-etat-global-general"><div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="panel back-dash blue">
-                       <i class="fa fa-bar-chart fa-3x"></i><strong> &nbsp; ETAT GLOBAL</strong>
-                     <p class="text-muted">Cliquez ici pour ouvrir l'état global concernant l'ensemble des projets existants. Cet état reprend les budgets commandes et horaires. </p>
-                </div>
-            </div></a>
+          <div class="panel back-dash blue">
+                     <i class="fa fa-bar-chart fa-3x"></i><strong> &nbsp; ETAT GLOBAL</strong>
+                   <p class="text-muted">Cliquez ici pour ouvrir l'état global concernant l'ensemble des projets existants. Cet état reprend les budgets commandes et horaires. </p>
+              </div>
+          </div>
+      </a>
 
 		</div>
 
@@ -329,5 +344,7 @@
             });
     });
 </script>
+
+<script src="{{asset('/js/ajax/getInfosBG.js')}}"></script>
 
 @endsection

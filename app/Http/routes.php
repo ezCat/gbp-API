@@ -69,6 +69,8 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
     // autocompletion fournisseur
     Route::get('ajax/getListFournisseur', 'SaisieController@getListFournisseur');
 
+    Route::get('ajax/getSumUpBG', 'DashboardController@getSumUpBG');
+
     // AJAX routes pour saisie projet
     Route::post('ajax/deleteEnsemble', 'EnsembleController@destroy');
     Route::post('ajax/deleteCommande', 'CommandeController@destroy');

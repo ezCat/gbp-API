@@ -241,7 +241,7 @@
         <input type="hidden" id="active_menu" value="master">
 
         <div class="row">
-            <div style="margin-left: 20px"><h2><b>LHP N4</b> : Gestion de projet globale</h2></div>
+            <div style="margin-left: 20px"><h2><b>{{ session()->get('name_projet') }}</b> : Gestion de projet globale</h2></div>
         </div>
 
         <div class="row">
