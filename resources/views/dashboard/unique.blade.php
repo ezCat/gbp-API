@@ -32,26 +32,30 @@
               <th>Delta</th>
             </tr> 
           </thead>
+            @foreach($etat_unique_commandes as $result)
 
+              <tr>
+                <td style="width: 28%">{{$result->p_libelle}}</td>
+                <td style="width: 28%">{{$result->budget}} €</td>
+                <td style="width: 28%">{{$result->reel}} €</td>
+                
+                @if($result->diff > 0)
+                  <td style="width: 15%; color: green"><b class="sum_commande">{{$result->diff}}</b> €</td>
+                @else
+                  <td style="width: 15%; color: red"><b class="sum_commande">{{$result->diff}}</b> €</td>
+                @endif
+
+              </tr>
+            @endforeach
+
+            <tr>
+              <td></td>
+              <td></td>
+              <td style="text-align: right">Total : </td>
+              <td style="font-size: 20px"><b><span id="total_commande_eg"></span></b></td>
+            </tr>
           <tbody>
-            <tr>
-              <td style="width: 28%">Qualification</td>
-              <td style="width: 28%">14 000 €</td>
-              <td style="width: 28%">15 550 €</td>
-              <td style="width: 15%">+ 1 550 €</td>
-            </tr> 
-            <tr>
-              <td>Colisage</td>
-              <td>1600 €</td>
-              <td>1600 €</td>
-              <td>0 €</td>
-            </tr> 
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td><strong>+ 1 550 €</strong></td>
-            </tr> 
+            
           </tbody>
         </table>
 
@@ -67,24 +71,26 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td style="width: 28%">Qualification</td>
-              <td style="width: 28%">140 h</td>
-              <td style="width: 28%">160 h</td>
-              <td style="width: 15%">+ 20 h</td>
-            </tr> 
-            <tr>
-              <td>Colisage</td>
-              <td>15 h</td>
-              <td>8 h</td>
-              <td>- 7 h</td>
-            </tr> 
+              @foreach($etat_unique_heures as $result)
+
+              <tr>
+                  <td style="width: 28%">{{$result->p_libelle}}</td>
+                  <td style="width: 28%">{{$result->budget}} h</td>
+                  <td style="width: 28%">{{$result->reel}} h</td>
+                  @if($result->diff > 0)
+                    <td style="width: 15%; color: green"><b class="sum_heure">{{$result->diff}}</b> h</td>
+                  @else
+                    <td style="width: 15%; color: red"><b class="sum_heure">{{$result->diff}}</b> h</td>
+                  @endif
+              </tr>
+            @endforeach
+
             <tr>
               <td></td>
               <td></td>
-              <td></td>
-              <td><strong>+ 13 h</strong></td>
-            </tr> 
+              <td style="text-align: right">Total : </td>
+              <td style="font-size: 20px"><b><span id="total_heure_eg"></span></b></td>
+            </tr>
           </tbody>
         </table>
 
@@ -228,6 +234,36 @@
         </div>
 	</div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    var total_heure = 0
+
+    $(".sum_heure").each(function() {
+        total_heure += parseInt($(this).text(), 10)
+    });
+
+    $('#total_heure_eg').text(total_heure + ' h')
+    if (total_heure > 0) {
+      $('#total_heure_eg').css('color', 'green');
+    }else{
+      $('#total_heure_eg').css('color', 'red');
+    }
+
+    var total_commande = 0
+
+    $(".sum_commande").each(function() {
+        total_commande += parseInt($(this).text(), 10)
+    });
+
+    $('#total_commande_eg').text(total_commande + ' €')
+    if (total_commande > 0) {
+      $('#total_commande_eg').css('color', 'green');
+    }else{
+      $('#total_commande_eg').css('color', 'red');
+    }
+  });
+</script>
 
 <script type="text/javascript">
   $(document).ready(function () {

@@ -52,8 +52,6 @@ class DashboardController extends Controller
             ->where('projet.id', '=', $id_projet)
             ->get();
 
-
-
         $data = array(
                 'heure_rel' => $total_heures_realisees[0]->total_heure,
                 'comm_rel' => $total_commandes_realisees[0]->total_prix,
@@ -61,11 +59,18 @@ class DashboardController extends Controller
                 'comm_prev' => $total_commandes_previsionnelles[0]->total_prix
             );
 
-        return view('dashboard/unique', compact('data'));
+        $etat_unique_commandes = $this->getCommandeEtatGlobalUnique($request);
+        $etat_unique_heures = $this->getHeureEtatGlobalUnique($request);
+
+        return view('dashboard/unique', compact('data', 'etat_unique_commandes', 'etat_unique_heures'));
     }
 
     public function showBG(Request $request){
-        return view('dashboard/general');
+
+        $etat_global_commandes = $this->getCommandeEtatGlobalGeneral($request);
+        $etat_global_heures = $this->getHeureEtatGlobalGeneral($request);
+
+        return view('dashboard/general', compact('etat_global_heures', 'etat_global_commandes'));
     }
 
     public function showMA(Request $request){
@@ -205,6 +210,78 @@ class DashboardController extends Controller
             );
 
         return response()->json($output);
+    }
+
+    public function getCommandeEtatGlobalGeneral(Request $request){
+
+        $result = DB::table('ensemble')
+            ->join('commande', 'ensemble.id', '=', 'commande.fk_id_ensemble')
+            ->join('projet', 'projet.id', '=', 'ensemble.fk_id_projet')
+            ->select('projet.p_libelle', DB::raw('SUM(commande.c_prix) as reel'), 'ensemble.en_budget_commande as budget', DB::raw('(ensemble.en_budget_commande - SUM(commande.c_prix)) as diff'))
+            ->where('ensemble.fk_id_etat', '=', '1')
+            ->where('commande.fk_id_etat', '=', '1')
+            ->groupBy('p_libelle')
+            ->orderBy('p_libelle')
+            ->get();
+
+        return $result;
+    }
+
+    public function getHeureEtatGlobalGeneral(Request $request){
+
+        $result = DB::table('ensemble')
+            ->join('heure', 'ensemble.id', '=', 'heure.fk_id_ensemble')
+            ->join('projet', 'projet.id', '=', 'ensemble.fk_id_projet')
+            ->select(
+                      DB::raw('projet.p_libelle, 
+                               SUM(heure.h_duree_mission) as reel, 
+                               (SELECT SUM(value) FROM budget_heure_ressource, ensemble WHERE budget_heure_ressource.fk_id_etat = ensemble.id) as budget, (SUM(heure.h_duree_mission) - (SELECT SUM(value) FROM budget_heure_ressource, ensemble WHERE budget_heure_ressource.fk_id_etat = ensemble.id)) as diff
+                               '))
+            ->where('ensemble.fk_id_etat', '=', '1')
+            ->where('heure.fk_id_etat', '=', '1')
+            ->groupBy('p_libelle')
+            ->orderBy('p_libelle')
+            ->get();
+
+        return $result;
+    }
+
+    public function getCommandeEtatGlobalUnique(Request $request){
+        $id_projet = $request->session()->get('id_projet');
+
+        $result = DB::table('ensemble')
+            ->join('commande', 'ensemble.id', '=', 'commande.fk_id_ensemble')
+            ->join('projet', 'projet.id', '=', 'ensemble.fk_id_projet')
+            ->select('projet.p_libelle', DB::raw('SUM(commande.c_prix) as reel'), 'ensemble.en_budget_commande as budget', DB::raw('(ensemble.en_budget_commande - SUM(commande.c_prix)) as diff'))
+            ->where('ensemble.fk_id_etat', '=', '1')
+            ->where('commande.fk_id_etat', '=', '1')
+            ->where('ensemble.fk_id_projet', '=', $id_projet)
+            ->groupBy('p_libelle')
+            ->orderBy('p_libelle')
+            ->get();
+
+        return $result;
+    }
+
+    public function getHeureEtatGlobalUnique(Request $request){
+        $id_projet = $request->session()->get('id_projet');
+
+        $result = DB::table('ensemble')
+            ->join('heure', 'ensemble.id', '=', 'heure.fk_id_ensemble')
+            ->join('projet', 'projet.id', '=', 'ensemble.fk_id_projet')
+            ->select(
+                      DB::raw('projet.p_libelle, 
+                               SUM(heure.h_duree_mission) as reel, 
+                               (SELECT SUM(value) FROM budget_heure_ressource, ensemble WHERE budget_heure_ressource.fk_id_etat = ensemble.id) as budget, (SUM(heure.h_duree_mission) - (SELECT SUM(value) FROM budget_heure_ressource, ensemble WHERE budget_heure_ressource.fk_id_etat = ensemble.id)) as diff
+                               '))
+            ->where('ensemble.fk_id_etat', '=', '1')
+            ->where('heure.fk_id_etat', '=', '1')
+            ->where('ensemble.fk_id_projet', '=', $id_projet)
+            ->groupBy('p_libelle')
+            ->orderBy('p_libelle')
+            ->get();
+
+        return $result;
     }
 
     public function getListeProjetBG()

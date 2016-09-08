@@ -35,68 +35,78 @@
     
     <div class="modal-content dark">
         <h2>Etat Global : Commandes<button class="btn-circle warning" style="float: right"><i class="fa fa-print fa-2x" style="color: white"></i></button></h2>
-        <table class="table" style="width: 100%">
+        <table class="table" style="width: 100%; text-align: center">
           <thead>
              <tr>
-              <th>Nom du projet</th>
-              <th>Budget Prévisionnel</th>
-              <th>Dépenses Réelles</th>
-              <th>Delta</th>
+              <th style="text-align: center">Nom du projet</th>
+              <th style="text-align: center">Budget Prévisionnel</th>
+              <th style="text-align: center">Dépenses Réelles</th>
+              <th style="text-align: center">Delta</th>
             </tr> 
           </thead>
 
           <tbody>
-            <tr class="italic">
-              <td style="width: 28%">LHP N4</td>
-              <td style="width: 28%">14 000 €</td>
-              <td style="width: 28%">15 550 €</td>
-              <td style="width: 15%">+ 1 550 €</td>
-            </tr> 
+
+            @foreach($etat_global_commandes as $result)
+
+              <tr>
+                <td style="width: 28%">{{$result->p_libelle}}</td>
+                <td style="width: 28%">{{$result->budget}} €</td>
+                <td style="width: 28%">{{$result->reel}} €</td>
+                
+                @if($result->diff > 0)
+                  <td style="width: 15%; color: green"><b class="sum_commande">{{$result->diff}}</b> €</td>
+                @else
+                  <td style="width: 15%; color: red"><b class="sum_commande">{{$result->diff}}</b> €</td>
+                @endif
+
+              </tr>
+            @endforeach
+
             <tr>
-              <td>PROJET Z</td>
-              <td>1600 €</td>
-              <td>1600 €</td>
-              <td>0 €</td>
-            </tr> 
-            <tr>
               <td></td>
               <td></td>
-              <td></td>
-              <td><strong>+ 1 550 €</strong></td>
-            </tr> 
+              <td style="text-align: right">Total : </td>
+              <td style="font-size: 20px"><b><span id="total_commande_eg"></span></b></td>
+            </tr>
+
           </tbody>
         </table>
 
         <h2>Etat Global : Heures</h2>
-        <table class="table" style="width: 100%">
+        <table class="table" style="width: 100%; text-align: center">
           <thead>
              <tr>
-              <th>Nom du projet</th>
-              <th>Heures Prévisionnelles</th>
-              <th>Heures Réelles</th>
-              <th>Delta</th>
+              <th style="text-align: center">Nom du projet</th>
+              <th style="text-align: center">Heures Prévisionnelles</th>
+              <th style="text-align: center">Heures Réelles</th>
+              <th style="text-align: center">Delta</th>
             </tr> 
           </thead>
 
           <tbody>
-            <tr class="italic">
-              <td style="width: 28%">LHP N4</td>
-              <td style="width: 28%">140 h</td>
-              <td style="width: 28%">160 h</td>
-              <td style="width: 15%">+ 20 h</td>
-            </tr> 
+
+            @foreach($etat_global_heures as $result)
+
+              <tr>
+                  <td style="width: 28%">{{$result->p_libelle}}</td>
+                  <td style="width: 28%">{{$result->budget}} h</td>
+                  <td style="width: 28%">{{$result->reel}} h</td>
+                  @if($result->diff > 0)
+                    <td style="width: 15%; color: green"><b class="sum_heure">{{$result->diff}}</b> h</td>
+                  @else
+                    <td style="width: 15%; color: red"><b class="sum_heure">{{$result->diff}}</b> h</td>
+                  @endif
+              </tr>
+            @endforeach
+
             <tr>
-              <td>PROJET Z</td>
-              <td>15 h</td>
-              <td>8 h</td>
-              <td>- 7 h</td>
-            </tr> 
-            <tr>
               <td></td>
               <td></td>
-              <td></td>
-              <td><strong>+ 13 h</strong></td>
-            </tr> 
+              <td style="text-align: right">Total : </td>
+              <td style="font-size: 20px"><b><span id="total_heure_eg"></span></b></td>
+            </tr>
+
           </tbody>
         </table>
 
@@ -235,19 +245,32 @@
 </div>
 
 <script type="text/javascript">
-  $(function(){
-    function tally (selector) {
-      $(selector).each(function () {
-        var total = 0,
-          column = $(this).siblings(selector).andSelf().index(this);
-        $(this).parents().prevUntil(':has(' + selector + ')').each(function () {
-          total += parseFloat($('td.sum:eq(' + column + ')', this).html()) || 0;
-        })
-        $(this).html(total);
-      });
+  $(document).ready(function () {
+    var total_heure = 0
+
+    $(".sum_heure").each(function() {
+        total_heure += parseInt($(this).text(), 10)
+    });
+
+    $('#total_heure_eg').text(total_heure + ' h')
+    if (total_heure > 0) {
+      $('#total_heure_eg').css('color', 'green');
+    }else{
+      $('#total_heure_eg').css('color', 'red');
     }
-    tally('td.subtotal');
-    tally('td.total');
+
+    var total_commande = 0
+
+    $(".sum_commande").each(function() {
+        total_commande += parseInt($(this).text(), 10)
+    });
+
+    $('#total_commande_eg').text(total_commande + ' €')
+    if (total_commande > 0) {
+      $('#total_commande_eg').css('color', 'green');
+    }else{
+      $('#total_commande_eg').css('color', 'red');
+    }
   });
 </script>
 

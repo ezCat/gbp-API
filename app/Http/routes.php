@@ -38,7 +38,7 @@ Route::group(['middleware' => ['web', 'cnx.ad']], function () {
         Route::resource('commande', 'CommandeController');
         Route::resource('ensemble', 'EnsembleController');
 
-        Route::get('go', 'DashboardController@getCommandeFournisseurBU');
+        Route::get('go', 'DashboardController@getHeureEtatGlobalGeneral');
 
     });
 
