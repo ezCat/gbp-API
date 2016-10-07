@@ -9,6 +9,7 @@ $(document).ready(function(){
         }
         
         var id = $(this).parent("tr").attr('id').slice(-1)
+        var id = $(this).parent("tr").attr('data-id')
         $.ajax({
             type: 'POST',
             url: 'http://localhost/gbp-API/public/ajax/deleteHeure',

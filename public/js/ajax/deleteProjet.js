@@ -9,6 +9,7 @@ $(document).ready(function(){
         }
         
         var id = $(this).parent("tr").attr('id').slice(-1)
+        var id = $(this).parent("tr").attr('id')
         console.log(id)
         $.ajax({
             type: 'POST',
