@@ -36,7 +36,7 @@
                 @endif
 
                 @foreach($table_commande as $cmd)
-                    <tr id="commande-id-{{ $cmd->id }}">
+                    <tr id="commande-id-{{ $cmd->id }}" data-id="{{ $cmd->id }}">
                         <td style="padding: 25px 0 0 0; text-align: center;">
                             @if ($cmd->c_insatisfaction_livraison == 1)
                                 <i class="fa fa-truck" style="color: red" title="Livraison en retard"></i>

@@ -40,7 +40,7 @@
                 @endif
 
                 @foreach($table_ensemble as $yop)
-                    <tr id="ensemble-id-{{ $yop['id'] }}">
+                    <tr id="ensemble-id-{{ $yop['id'] }}" data-id="{{ $yop['id'] }}">
                         <td>{{Form::text('en_libelle', $yop['en_libelle'], ["class" => "form-tab width-input-text updatable-ensemble"])}}</td>
                         <td>{{Form::text('en_budget_commande', $yop['en_budget_commande'].' €', ["class" => "form-tab width-input-number sum-ensemble-cmd updatable-ensemble"])}}</td>
 
